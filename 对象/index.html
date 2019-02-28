@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/html">
+        function Student(name, age, sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.say = function () {
+                console.log(this.name)
+            }
+        }
+
+        var student = new Student('ly', 18, 'male')
+
+        console.log(new Student('ly', 18, 'male').name)  // ly
+
+        // 函数内部构造原理： 1、在函数体最前面隐式的加上 this={}  2、执行this.xxx =xxx  3、隐式的返回this  例如：
+        function Student(name, age, sex) {
+            // 1、在函数体最前面隐式的加上 this={} 
+            //   var this = {}
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.say = function () {
+                console.log(this.name)
+            }
+            // 3、 隐式的返回this
+            // return this;
+        }
+    </script>
+
+
+    <script type="text/tpl">
+        var str = "abc";
+        str += 1;
+        console.log(str)  // abc1
+        var test = typeof (str); //此处返回typeof(str)为string 并赋值给test结果即为： test = 'string'
+        console.log(test) // string
+        //注意基础知识点：typeof返回的六种类型： number、string、function、boolean、undefine、object
+        if (test.length == 6) {
+            test.sign = 'typeof的返回结果可能为String'
+            //注意此处处理方式为 new String(test).sign="xxxx";  delete;
+            //先新包装一个类，并赋值属性sign=’xxxx‘
+            //随后delete
+        }
+        //new String(test).sign
+        console.log(test.sign); // undefined
+    </script>
+
+    <script type="text/tpl">
+        function stringlenght(a) {
+            var a;
+            var bitnum = 0
+            for (var i = 0; i < a.length; i++) {
+                if (a.charCodeAt(i) <= 255) {
+                    bitnum += 1
+                }
+                if (a.charCodeAt(i) > 255) {
+                    bitnum += 2
+                }
+            }
+            console.log(a + '的字节长度是' + bitnum)
+        }
+
+        stringlenght("hah哈哈")  //  hah哈哈的字节长度是7
+    </script>
+
+    <script type="text/tpl">
+        function stringlenght(a) {
+            var a;
+            var bitnum = 0
+            for (var i = 0; i < a.length; i++) {
+                if (a.charCodeAt(i) <= 255) {
+                    bitnum += 1
+                } else {
+                    bitnum += 2
+                }
+            }
+            console.log(a + '的字节长度是' + bitnum)
+        }
+        stringlenght("98")  //  98的字节长度是2
+    </script>
+
+
+    <script type="text/tpl">
+        function stringlenght(a) {
+            var a;
+            var bitnum = a.length
+            for (var i = 0; i < a.length; i++) {
+                if (a.charCodeAt(i) > 255) {
+                    bitnum += 1
+                }
+            }
+            console.log(a + '的字节长度是' + bitnum)
+        }
+
+        stringlenght("1")   //  1的字节长度是1
+    </script>
+    <script type="text/tpl">
+        (function sum(a, b, c, d) {
+            console.log(a + b + c + d) // 10
+        }(1, 2, 3, 4))    
+
+        function test() {
+            var arr = [];
+            for (var i = 0; i < 10; i++) {
+                arr[i] = function () {
+                    console.log(i + " ")
+                }
+                
+            }
+            return arr;
+        }
+        var myarr = test();
+        for(var j=0; j<10;j++){
+
+            myarr[j]()
+        }
+
+        // 10 10 10 10 10 10 10 10 10 10 
+        
+    </script>
+
+    <script type="text/tpl">
+        console.log(a);  // function a(){}
+        function a(){
+            var a =18;        
+        }
+        var a = 10;
+        num = Number('a')
+        console.log(num)  // NaN
+
+        var b="abc"
+        b++;
+        console.log(b)  // NaN
+    
+    </script>
+
+    <script type="text/tpl">
+        IE       trident
+        Chromr   webkit / blink
+        firefox  geocko
+        opera    presto
+        safari   webkit
+
+        解释性语言、 单线程
+
+        结构 html
+        样式 css
+        行为 js
+
+
+        var a,
+            b,
+            c,
+            d,
+            e;
+            变量名必须以字母、_、$开头
+            变量名可以包含字母、_、$、数字
+            不能把关键字和保留字当变量名
+
+            基本数据类型：
+            原始值： number、boolean、string、undefined、null  存放在栈里面，栈赋值属于拷贝，拷贝之后是两个值
+            引用数据类型：function、object、array       栈里面存放的地址，数据存放到堆里面，拷贝之后是同一个地址
+ 
+
+            typeof返回的六种数据类型： number 、string、 boolean、undefine、 object、function
+    </script>
+
+    <script type="text/tpl">
+        var arr = new Array;
+        arr = [1, 2, 3, 4];
+        var a = null;
+        var b = undefined;
+
+        function aa() {}
+        console.log(typeof (arr) + '---数组') // object
+        console.log(typeof (a) + '---null') // object
+        console.log(typeof (b) + '---undefined') // undefined
+        console.log(typeof (aa) + '---方法') // function
+    </script>
+
+    <script type="text/tpl">
+        var arr = [1, 4, 0,3];
+
+        // 冒泡排序
+        function mppaixu(arr) {
+            for (var i = 0; i < arr.length - 1; i++) {
+                for (var j = 0; j < arr.length - 1 - i; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        var temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+
+                    }
+                    // console.log(i+"--"+ j +"-- ["+arr +"]")
+                }
+               
+            }
+            return arr;
+        }
+        mppaixu(arr)
+        // console.log(mppaixu(arr))
+
+        // 插入排序
+        function crpaixu(arr) {
+            for (var i = 1; i < arr.length; i++) {
+                for (var j = i-1; j >=0; j--)
+                    if (arr[i] < arr[j]) {
+                        var temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                      
+
+                    }
+                    console.log(i+"--"+ j +"-- ["+arr +"]")
+            }
+            return arr;
+        }
+        crpaixu(arr)
+        console.log(crpaixu(arr))
+    </script>
+    <script>
+
+        //任何数据类型加字符串都是字符串
+
+        var a = 1 + 1 + "a" + "(1+1)"
+        console.log(a) // 2a(1+1)
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

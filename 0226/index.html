@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/tpl">
+        function type(target) {
+            var ret = typeof (target);
+            var template = {
+                "[object String]": "string -- object",
+                "[object Array]": "array",
+                "[object Number]": "number -- object",
+                "[object Object]": "object"
+            }
+            if (target == null) {
+                return null;
+            }
+            if (ret == "object") {
+                var str = Object.prototype.toString.call(target);
+                return template[str];
+            } else {
+                return ret;
+            }
+        }
+    </script>
+
+
+    <script type="text/tpl">
+        // 正则表达
+        // 题目： 100000000    ---》  100,000,000;
+
+
+        // $ 从结尾处开始匹配    匹配个数  (\d{3})+     +带边1至多个()内的
+
+        // ?=（(\d{3})+ $） 
+
+        // \B 表示匹配到非单词边界 eg :    ,100,000,000   避免出现单词首部出现，
+        var str = "100000000"
+
+        var reg = /(?=((\B\d{3})+$))/g;
+
+        // str.match(reg)
+        // str.replace(reg,',')
+        console.log(str.replace(reg, ','))
+
+
+
+
+        //
+        var str = 'get-element-by-id';
+        // getElementById
+
+        var reg = /-(\w)/g;
+        str.replace(reg, function ($, $1) {
+            return $1.toUpperCase();
+        })
+
+        console.log(str.replace(reg, function ($, $1) {
+            return $1.toUpperCase();
+        }))
+    </script>
+    <script>
+        // JSON   
+        // json.pqarse()   string  -->  json
+        //  json.stringify()  json  --> string  将json转换成字符串
+
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

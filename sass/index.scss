@@ -1,0 +1,257 @@
+$color :#fff !default;  //定义文本颜色
+$bgColor:#34495e !default;  //定义背景颜色
+$sfbgColor:#e74c3c !default;  //定义鼠标滑过颜色
+$fontSize: 14px !default; //定义字号
+$fontFamily:Arial, 
+Helvetica !default; //定义字体
+$width: 462px !default;  //初始化长度
+//清除浮动
+%clearfix {
+    & {
+        zoom: 1;
+    }
+
+    & :before,
+    & :after {
+        content: "";
+        display: table;
+
+    }
+
+    & :after {
+        overflow: hidden;
+        clear: both;
+    }
+}
+
+%listStyle {
+    margin: 0;
+    padding: 0;
+    list-style: none outside none;
+}
+
+
+$prefix-for-webkit: true !default;
+$prefix-for-mozilla: true !default;
+$prefix-for-microsoft: true !default;
+$prefix-for-opera: true !default;
+$prefix-for-spec: true !default;
+
+//浏览器前缀
+@mixin prefixer ($property, $value, $prefixes) {
+    @each $prefix in $prefixes {
+        @if $prefix==webkit and $prefix-for-webkit==true {
+            -webkit-#{$property}: $value;
+        }
+
+        @else if $prefix==moz and $prefix-for-mozilla==true {
+            -moz-#{$property}: $value;
+        }
+
+        @else if $prefix==ms and $prefix-for-microsoft==true {
+            -ms-#{$property}: $value;
+        }
+
+        @else if $prefix==o and $prefix-for-opera==true {
+            -o-#{$property}: $value;
+        }
+
+        @else if $prefix==spec and $prefix-for-spec==true {
+            #{$property}: $value;
+        }
+
+        @else {
+            @warn "Unrecognized prefix: #{$prefix}";
+        }
+    }
+}
+
+
+@mixin transform($property...) {
+    @include prefixer(transform, $property, webkit moz o ms sspec);
+}
+
+
+
+
+
+@mixin transform-origin($axes: 50%) {
+
+    @include prefixer(transform-origin, $axes, webkit moz o ms spec);
+}
+
+@mixin skewX($degrees) {
+    @include prefixer(transform, skewX($degrees), webkit moz o ms spec);
+    -webkit-backface-visibility: hidden;
+}
+
+@function transition-property-names($props, $vendor: false) {
+    $new-props: ();
+
+    @each $prop in $props {
+        $new-props: append($new-props, transition-property-name($prop, $vendor), comma);
+    }
+
+    @return $new-props;
+}
+
+@function transition-property-name($prop, $vendor: false) {
+
+    // put other properties that need to be prefixed here aswell 
+    @if $vendor and $prop==transform {
+        @return unquote('-'+$vendor+'-'+$prop);
+    }
+
+    @else {
+        @return $prop;
+    }
+}
+
+// transition //---------------------------------------- 
+@mixin transition ($properties...) {
+    @if length($properties)>=1 {
+        @include prefixer(transition, $properties, webkit moz o ms spec);
+    }
+
+    @else {
+        $properties: all 0.15s ease-out 0;
+        @include prefixer(transition, $properties, webkit moz o ms spec);
+    }
+}
+
+@mixin fit-content {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: -o-fit-content;
+    width: -ms-fit-content;
+    width: fit-content;
+}
+
+
+
+@mixin box-shadow($shadow...) {
+    @include prefixer(box-shadow, $shadow, webkit spec);
+}
+
+
+
+%typography {
+    color: $color;
+
+    text: {
+        decoration: none;
+        align: center;
+    }
+
+    font: {
+        family: $fontFamily;
+        size: $fontSize;
+    }
+}
+
+.menu {
+    width: $width;
+    @extend %clearfix;
+    @extend %listStyle;
+    @include fit-content;
+    margin: 50px auto;
+}
+
+.drop-menu {
+    @extend %listStyle;
+}
+
+.menu>li {
+    background: $bgColor;
+    float: left;
+    position: relative;
+    @include skewX(25deg);
+}
+
+.menu a {
+    display: block;
+    @extend %typography;
+}
+
+.menu li:hover {
+    background: $sfbgColor;
+}
+
+.menu>li>a {
+    padding: 1em 2em;
+    @include skewX(-25deg);
+}
+
+/*Dropdown menu*/
+.drop-menu {
+    position: absolute;
+    width: $width / 4;
+    left: 50%;
+    margin-left: -($width / 8);
+    opacity: 0;
+    visibility: hidden;
+    @include skewX(-25deg);
+    @include transform-origin(left top);
+
+    li {
+        background-color: $bgColor;
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        @include transition(all .2s ease);
+
+        a {
+            padding: 1em 2em;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: -125%;
+            height: 100%;
+            width: 100%;
+            @include box-shadow(0 0 50px rgba(0, 0, 0, .9));
+        }
+
+        &:nth-child(odd) {
+            @include transform(skewX(-25deg) translateX(0));
+
+            a {
+                @include skewX(25deg);
+            }
+
+            &::after {
+                right: -50%;
+                @include transform(skewX(-25deg) rotate(3deg));
+            }
+        }
+
+        &:nth-child(even) {
+            @include transform(skewX(25deg) translateX(0));
+
+            a {
+                @include skewX(-25deg);
+            }
+
+            &::after {
+                left: -50%;
+                @include transform(skewX(25deg) rotate(3deg));
+            }
+        }
+    }
+}
+
+.menu>li:hover .drop-menu,
+.menu>li:hover .drop-menu li {
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu>li:hover .drop-menu li:nth-child(even) {
+    @include transform(skewX(25deg) translateX(15px));
+}
+
+.menu>li:hover .drop-menu li:nth-child(odd) {
+    @include transform(skewX(-25deg) translateX(-15px));
+}
