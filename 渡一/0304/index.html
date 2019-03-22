@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <!-- 10:10 - 10:55  js发展史 -->
+    <script>
+        // 浏览器组成： shell + 内核
+        // shell： 包括界面、 菜单等
+        // 内核： 渲染引擎（ 绘制网页， 包括html、 css等） js引擎（ js） 其他引擎（ 异步等其他部门）
+
+
+
+        // 2001年发布ie6，首次实现对js引擎的优化和分离
+        // 2008年，google发布chrome，采用优化后的js引擎，能直接把js代码直接转化为机械代码执行，大大提高了速度快
+
+
+        // js特性：
+        // 1、解释性语言：不需要编译成文件，可跨平台执行
+        // 2、单线程
+
+        // js三大部分：ecmascript  dom bom
+    </script>
+
+
+    <!-- 10:55 - 15::30 -->
+    <script>
+        // 主流浏览器：
+        // IE       trident
+        // chrome   webkit / blink
+        // firefox  gecko
+        // opera    Presto
+        // safari   webkit
+
+        // 1、IE浏览器内核：Trident内核，也是俗称的IE内核； 
+        // 2、Chrome浏览器内核：统称为Chromium内核或Chrome内核，以前是Webkit内核，现在是Blink内核； 
+        // 3、Firefox浏览器内核：Gecko内核，俗称Firefox内核； 
+        // 4、Safari浏览器内核：Webkit内核； 
+        // 5、Opera浏览器内核：最初是自己的Presto内核，后来是Webkit，现在是Blink内核； 
+
+        // !important  ,表示高优先级，ie7及以上，firefox都支持，ie6认识带!important的样式属性，但不认识!important的优先级；
+        // -webkit- ，针对safari，chrome浏览器的内核CSS写法
+        // -moz-，针对firefox浏览器的内核CSS写法
+        // -ms-，针对ie内核的CSS写法
+        // -o-，针对Opera内核的CSS写法
+
+
+
+        // 结构  样式  行为
+        // html  css  js
+
+        // js基本语法
+        // 变量  var a;
+        // var  a,
+        // b,
+        // c,
+        // d,
+        // e; 
+        // 变量合并声明，单一变量模式
+
+        // 变量名必须以字母、_、和$开头
+        // 变量名可以包含字母、_、$、数字
+        // 不能用关键字和保留字当变量名
+
+
+        // 运算过程大于赋值符
+
+
+        // 基本语法
+
+        // 值类型：原始值 + 引用值
+        // 原始值包含： number、 string、undefined、boolean、null
+        // var b; console.log(b)   b即为undefined    定义了没有赋值
+        // null一般表示占位
+
+        // 引用值包含：array、object、function 
+
+        // var arr = [1,2];
+        // var arr1 = arr;
+        // console.log(arr1)  // [1,2]
+        // arr = [1,2,3];
+        // console.log(arr)  // [1,2,3,]
+        // console.log(arr1) // [1,2]
+
+
+        // js运算操作符
+        // var  a = "a" + 1    console.log(a) // a1
+        // var  a = 1 + 1    console.log(a)  // 2
+        // 任何和字符相加的都变成字符串，即加号两边全是数字则表示为加号，如果有字符串则表示为连接符
+        // var  a = 1 + 1 + "a" + "(1+2)";   console.log(a)  // 2a(1+2)
+
+        // var a = 10;
+        // a += 10 + "a";
+        // console.log(a)  // 1010a
+
+        // var a = 10;
+        // a *= 10 + 2;
+        // console.log(a)  // 120   
+
+
+        //  var a = a + 1;
+        // console.log(a)   // NaN
+    </script>
+
+    <script type="type/tpl">
+        console.log(NaN == NaN) //false
+
+
+        //   undefined/null/NaN/""/0/false   转换之后都为false
+
+
+        //   var a = 1 && 2;
+        //   console.log(a)  // 2
+
+
+        //   var a = 1 && 2 + 2 ;
+        //   console.log(a)  // 4
+
+        //   var a = 1 && 0; 
+        //   console.log(a)  // 0
+
+        var a = 1 + 1 && 1 + 2;
+        console.log(a) // 3
+
+        var a = 1 + 1 && 1 + 'a';
+        console.log(a) // 1a
+    </script>
+
+    <script type="type/tpl">
+        // <!-- 扩展 -->
+        (function (x) {
+
+            return (function (y) {
+
+                console.log(x);
+
+            })(2)
+
+        })(1);    // 1
+
+    </script>
+
+    <script>
+        // <!-- 扩展 -->
+
+        var x = 2,
+            z = 1;
+
+        function a(y = x + 1, m = y + 2, z = z + 10) {
+            console.log(x, y, m, z)
+
+        }
+        a()  // z is not define
+    </script>
+
+
+    <script>
+        // 计算a的n次幂
+        // n = parseInt(window.prompt("n"))
+        // a = parseInt(window.prompt("a"))
+        var smul = 1;
+        for (var i = 0; i < n; i++) {
+            smul *= a;
+        }
+        console.log(smul)
+
+
+
+        // 计算n的阶乘
+        function fn(n) {
+            if (n == 1 || n == 0) {
+                return 1;
+            }
+            return n * fn(n - 1)
+        }
+
+        function fn1(n) {
+            var smul = 1;
+            for (var i = 1; i <= n; i++) {
+                smul *= i
+            }
+            console.log(smul)
+        }
+
+        //  计算菲波那切数列的第n项
+        function jc(n) {
+            if (n == 1 || n == 2) {
+                return 1;
+            }
+            return jc(n - 2) + jc(n - 1)
+        }
+    </script>
+
+
+</body>
+
+</html>

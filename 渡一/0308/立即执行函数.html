@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        立即执行函数
+
+        出生到使用仅一次，
+        针对初始化功能的函数
+        (function (){
+
+        }())
+
+
+
+     -->
+
+
+    <!-- 
+
+        闭包精细版
+      -->
+    <script>
+        function add() {
+            var count = 0;
+
+            function a() {
+                count++
+                console.log(count)
+
+            }
+            return a;
+
+        }
+      var myadd = add();
+      myadd();
+      myadd();
+      
+    </script>
+</body>
+
+</html>

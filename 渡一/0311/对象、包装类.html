@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+        对象的创建方法：
+        1、var obj = {}     对象字面量/对象直接量
+        2、构造函数
+           1） 系统自带的构造函数 object（）  eg： Array()、number()
+           2） 自定义
+        注意：构造函数最好用大驼峰式命名规则,所有单词首字母大写 eg: TheFirstNmae
+        function Person(){
+
+        }
+        var person1 = new Person
+
+
+        构造函数内部原理：
+        1、在函数体的最前面隐式添加 var this = {}
+        2、执行this.xxx = xxx;
+        2、隐式的返回 return this
+
+        
+        -->
+
+        <!-- 
+
+            包装类：
+
+         -->
+
+
+        <script>
+        function Car(name,age,sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.gecarade = 2014;
+
+        }
+        var car1 = new Car('ly',26,'man')
+        
+        </script>
+
+
+<!-- 
+
+    内置对象和包装类型：
+    内置对象： ES标准中规定的浏览器厂商已经实现的API，共11个；
+             1）包装类型： String、Number Boolean
+             2） Array、Date、Error、Math、RegExp
+             3）Function
+             4）Object
+             5）Global 全局（window）
+
+
+     包装类型：封装原始类型的值，并且提供操作值的API的对象
+              原始类型的值不能拥有属性和方法 
+     包装类型的原则：变量是什么类型的，就自动创建那个包装类型的对象               
+
+    
+ -->
+
+
+ <!-- 
+
+    原型：
+
+  -->
+  <script>
+    
+  </script>
+    
+</body>
+</html>

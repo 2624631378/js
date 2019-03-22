@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+ 
+
+    <script>
+        var x = 1;
+        if (function f() {}) {
+            x += typeof f; // 注意技巧 未定义的变量放到typeof里面都返回undefined
+        }
+        console.log(x)
+        
+        console.log(undefined == null); // true
+        console.log(undefined === null); // false
+        console.log(NaN === NaN); // false
+        console.log(isNaN("100")); // false
+
+        console.log({} == {}); // false  比对地址，引用值比对的都是地址
+    </script>
+
+
+
+    <!-- 
+         this
+     -->
+
+</body>
+
+</html>

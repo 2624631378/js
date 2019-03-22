@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var ly = {
+
+            f1: {
+                name: "ch"
+            },
+            f2: {
+                name: "jyj"
+            },
+            f3: {
+                name: "hh"
+            },
+            f4: {
+                name: "lxj"
+            },
+            sayf : function (num) {
+
+                return this['f' + num]    // this后面跟中括号的时候，中括号里面必须是字符串，可用于拼接变量
+
+            }
+        }
+
+
+        for (var key in ly){
+        console.log(ly.key)   // undefined    注意在for in循环里面不能用.直接访问属性，，ly.key相当于 ly['key'],无法找到key属性，所有打印出5个undefined
+        console.log(ly[key]) 
+
+        }
+    </script>
+
+
+<!-- 
+    A isntanceof B   
+    A对象是不是B构造函数构造出来的
+    看A对象的原型链上有没有B的原型
+ -->
+
+
+ <script>
+ 
+ </script>
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+  typeof 返回类型
+  typeof六种数据类型： string number boolean undefined object function 
+  array和null 属于object类型
+       -->
+
+    <!-- 
+    类型转换   undefined不能转换成数字，转出之后变成NaN
+    显示类型类型转换：
+    1.  number()  装换成数字，如果带有字符则输出NaN，  undefined输出NaN， null输出0， true输出 1    
+   -->
+    <script type="style/tpl">
+        var demo = true
+        var num = Number(demo)
+        console.log(typeof(num) + ":" + num )  // NaN
+    </script>
+
+    <!-- 
+        2. parseInt 转换成整形  如果以字符开头则输出NaN; 如果以数字开头则输出到前面的数字，eg： ab123 --》 nan    1234akjjkl   --》 1234
+                    进制转换 
+
+
+         3. parseFloat 同上，转换成浮点型数字  没有进制转换的功能
+         4. boolean
+         5. string
+         6. tostring   undefined和null不能用tostring转换   
+                        可把数字做进制转换，eg 10.tostring(8)表示将10进制换成8进制     
+     -->
+
+     <script>
+            var demo = 24;
+            // var num = parseInt(demo,2);  // 后面的数字为基地转换成十进制  取值范围是 2 - 16
+            // var num = parseFloat(demo);
+            var num = demo.toString(8)
+            console.log(typeof(num) + ":" + num )  // NaN
+        </script>
+
+
+
+
+
+<!-- 隐式类型转换 
+isNaN() 调用 Number
+++ / --   + / -   -*/% 运算前先转换成数字 调用 Number
++ 加号  调用 string
+
+> < >= <= 
+==   ！=
+
+undefined 和 null 相等
+NaN 不等于任何东西，包括本身
+
+-->
+
+<!-- 
+
+    不发生类型转换 ：  绝对等于的情况
+ -->
+
+ <!-- 
+   变量没有定义放到 typeof里面 返回 undefined而不是 not defind
+
+  -->
+
+ 
+
+</body>
+
+</html>

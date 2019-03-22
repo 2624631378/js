@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        (function () {
+
+            var a = b = 3;
+
+        })()
+
+        // console.log(a) // a is not definef  注意此处a的变量作用域，外部无法读取a的定义和值，故报错，下面的代码无法执行
+        console.log(typeof (a)) // undefined    注意typeof里面未定义的变量统统返回undefined
+        console.log(b) // 3
+        console.log(typeof (b)) // number
+
+
+
+        var myObject = {
+            foo: "bar",
+            func: function () {
+                var self = this;
+                console.log("outer func: this.foo = " + this.foo);
+                console.log("outer func: self.foo = " + self.foo);
+                (function () {
+                    console.log("inner func: this.foo = " + this.foo);
+                    console.log("inner func: self.foo = " + self.foo);
+                }());
+            }
+        };
+        myObject.func();
+
+
+
+        function foo1() {
+            return {
+                bar: "hello"
+            };
+        }
+
+        function foo2() {
+            return // 注意此处默认加逗号结束执行，无返回值的时候则返回undefined
+            {
+                bar: "hello"
+            };
+        }
+
+        var foo11 = foo1()
+        console.log(foo11) //{bar: "hello"} 
+
+        var foo22 = foo2()
+        console.log(foo22) //undefined
+
+
+
+        console.log(isNaN('32131sdasd')) // true   注意此处括号内为字符串，所以返回true
+
+
+        (function () {
+            console.log(foo22)
+            setTimeout(function () {
+                console.log(2)
+            }, 1000);
+            setTimeout(function () {
+                console.log(3)
+            }, 0);
+            console.log(4);
+        })();
+    </script>
+
+
+
+</body>
+
+</html>

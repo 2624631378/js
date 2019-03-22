@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 10:10 -   函数 -->
+
+    <!-- // 高内聚 弱耦合-->
+    <!--   // 函数申明 + 函数表达式 -->
+    <!-- // 开发规范 ： 函数命名小驼峰  第一个单词小写后面首字母大写 -->
+    <!-- // 函数两种定义形式：函数声明 + 函数表达式 -->
+    <!-- 函数表达式：命名函数表达式 + 匿名函数表达式 -->
+
+
+
+    <script>
+        function sum(a) {
+            // arguments    -->  [1,2,3]
+            console.log(arguments.length) // 3
+            console.log(sum.length) // 1 
+        }
+
+        // sum(1, 2, 3)
+
+
+
+
+        // 实现任意数求和        
+        function sum() {
+            var result = 0;
+            for(var i = 0; i < arguments.length; i++){
+
+                result += arguments[i];
+            }
+           console.log(result)
+        }
+        // sum()
+
+
+    // 相对应的实参和形参相互映射，一个改变，另一个改变，如果没有相对应则不改变，包括添加和修改等情况
+    function fn(a,b,c,d) {
+
+        //   var a = 3;
+        //   console.log(arguments[0])  // 3
+
+        //   arguments[0] = 5 
+        //   console.log(a)  // 5
+
+
+        //   var d = 4;
+        //   console.log(arguments[3])  // undefined    形参比实参多，形参定义，实参arguments不变
+
+
+          arguments[3] = 5  
+          console.log(d)  // undefined  实参列表arguments不可增加，d未定义
+        }
+
+
+       
+
+
+        fn(1, 2, 3) 
+
+    </script>
+</body>
+
+</html>

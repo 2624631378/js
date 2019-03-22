@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div style="width:100px; height:100px; background:red; position:absolute;left:400px;top:0;"></div>
+
+    <div>
+
+
+        <p></p>
+        <b></b>
+    </div>
+    <!-- <div style="width:1px; height:100%;background:green;position:absolute;left:449px;top:0;"></div>
+    <div style="width:100%; height:1px;background:green;position:absolute;left:0px;top:49px;"></div> -->
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        var disX,
+            disY;
+
+        div.onmousedown = function (e) {
+            disX = e.offsetX; // disX = e.pageX - parseInt(div.style.left)
+            disY = e.offsetY; // disY = e.pageY - parseInt(div.style.top)
+            document.onmousemove = function (e) {
+                var event = e || window.event;
+                div.style.left = e.clientX - disX + "px";
+                div.style.top = e.clientY - disY + "px";
+            }
+            document.onmouseup = function () {
+                div.onmousemove = null;
+            }
+        }
+
+
+        // // evnet对象的5种坐标
+        //  1、clients/clienty  相对于浏览器可视区左上角的坐标
+        //  2、screenx/screeny  相对于设备屏幕左上角的坐标
+        //  3、offsetx/offsety  相对于事件源左上角的坐标，例如点击一个div，则该div就是事件源，ff不支持
+        //  4、pagex/pagey  相对于整个网页左上角的坐标，即包括滚动条在内的高度，id不支持，在ie中使用X、Y，
+        //  5、x/Y  相对于与用css动态定位的最内层包容元素，
+
+
+
+        // 事件
+
+
+        //事件的button属性可以区分左右键  e.button == 0  表示左键点击       e.button ==2则表示右键
+
+
+        // keydown keypress
+
+        // 
+
+
+
+        function inser(targetnode, node) {
+
+
+
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+
+    继承方式：
+    1、原型链继承  缺点：继承了过多的属性
+    2、构造函数继承   利用call和apply  不能继承借用构造函数的原型、 每次构造都要多走一个函数
+    3、共享原型    不能随便更改原型
+    4、圣杯模式
+
+     -->
+
+    <script>
+        //  3、共享原型    不能随便更改原型,eg：son增加原型sex 则father也增加sex
+        Father.prototype.LastName = "josh";
+
+        function Father() {}
+
+        function Son() {}
+
+        Son.prototype = Father.prototype // 原型继承
+        var son = new Son()
+
+        console.log(son.LastName) // josh
+    </script>
+
+
+
+    <script>
+        //  3、共享原型    不能随便更改原型
+        Father.prototype.LastName = "josh";
+
+        function Father() {}
+
+        function Son() {}
+
+        function inherit(Target, Origin) {
+            Target.prototype = Origin.prototype
+        }
+
+        inherit(Son, Father)
+        var son = new Son()
+
+        console.log(son.LastName) // josh
+    </script>
+
+
+    <script>
+        //  4、圣杯模式，原型都独立，互不影响,eg:son添加原型不影响father
+
+        Father.prototype.LastName = "jinsyang";
+
+        function Father() {}
+
+        function Son() {}
+
+        function inherit(Target, Origin) {
+            function F() {};
+            F.prototype = Origin.prototype;
+            Target.prototype = new F();
+        }
+
+        inherit(Son, Father)
+        Son.prototype.sex = "male" // 增加原型sex后，father不增加sex
+        var son = new Son()
+        var father = new Father()
+
+
+        console.log(son.LastName) // jinsyang
+        console.log(father.LastName) // jinsyang
+        console.log(son.sex) // male
+        console.log(father.sex) // undefined
+
+
+        // son的原型属性 construtor 指向Father  
+        son.__proto__-- > new F().__proto__-- > Father.prototype
+
+        // 故改造inherit函数，使son的原型属性construtor指向自己本身
+        function inherit(Target, Origin) {
+            function F() {};
+            F.prototype = Origin.prototype;
+            Target.prototype = new F();
+            Target.prototype.constuctor = Target; // 将Target的constuctor指向自己本身
+        }
+    </script>
+
+
+
+</body>
+
+</html>
