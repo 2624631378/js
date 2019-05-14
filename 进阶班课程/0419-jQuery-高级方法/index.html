@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery.js"></script>
+</head>
+
+<body>
+
+    <!-- 
+        ajax
+
+     -->
+
+    <script type="shtml">
+        //  参数：
+        // 属性：url
+        //  type：请求方式
+        //  data：传递参数
+        // success: 请求成功之后的处理函数
+        // error:
+        // complete 请求完成之后的处理函数，最后执行
+        // context 改变函数上下文
+        // timeout 
+        // async : true  false 是否同异步   false 表示同步  true 表示异步，默认是异步 true
+        // dataType ： ‘jsonp’
+
+        // $.ajax({
+        //     url: 'https://easy-mock.com/mock/5c0b4a876162b83fe0a50cb9/person',
+        //     type: 'GET',
+        //     success: function (res) {
+        //         //    console.log(res.data)
+        //         var personArry = res.data;
+        //         personArry.forEach(function (ele, index) {
+        //             console.log(ele);
+
+        //         });
+        //     },
+        //     error: function (e) {
+        //         console.log('ghahha');
+
+        //     }
+        // })
+
+        function deal(res) {
+            console.log(res);
+
+
+        }
+
+        $.ajax({
+            url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+            type: 'GET',
+            data: {
+                wd: 'nba',
+                cb: 'deal'
+            },
+            dataType: 'jsonp',
+            success: function (res) {
+                //    console.log(res.data)
+                var personArry = res.data;
+                personArry.forEach(function (ele, index) {
+                    console.log(ele);
+
+                });
+            },
+            error: function (e) {
+                console.log('ghahha');
+
+            }
+        })
+    </script>
+
+
+
+    <script type="shtml">
+        // callback
+    var cb = $.Callbacks();  // 参数 once 只执行一次
+    function a (){
+        console.log('a');
+        
+    }
+    function b (){
+        console.log('b');        
+    }
+    cb.add(a,b);
+    cb.fire();
+
+
+</script>
+
+
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .tpl {
+            display: none;
+        }
+
+        .wrapper {
+            overflow: hidden;
+            border: 2px solid black;
+            width: 600px;
+            margin: 100px auto 0px;
+        }
+
+        .movieSection {
+            float: left;
+            width: 180px;
+            height: 180px;
+            padding: 10px;
+        }
+
+        .movieSection img {
+            width: 100%;
+            height: 150px;
+            cursor: pointer;
+        }
+
+        .movieSection h3 {
+            height: 30px;
+        }
+    </style>
+    <!-- 基本结构 -->
+    <!-- <div class="wrapper">
+        <div class='tpl'>
+            <img src=""></img>
+            <h3 class='movieName'></h3>
+        </div>
+    </div> -->
+
+
+
+    <script type="shtml">
+        $.ajax({
+            url: 'https://easy-mock.com/mock/5c09f40d3c098813c612cce6/movie/power',
+            type: 'POST',
+            data: {
+                username: 'cst',
+                password: '123123'
+            },
+            success: function (res) {
+                if (res.data.power == 'root') {
+                    $.ajax({
+                        url: 'https://easy-mock.com/mock/5c09f40d3c098813c612cce6/movie/movieList',
+                        type: 'GET',
+                        success: function (res) {
+                            console.log(res);
+
+                            var data = res.data;
+                            var $wrapper = $('.wrapper');
+                            data.forEach(function (ele, index) {
+                                var $MoveSection = $('.tpl').clone().removeClass('tpl')
+                                    .addClass('movieSection');
+                                $MoveSection.data({
+                                        id: ele.id
+                                    }).on('click', function () {
+                                        $.ajax({
+                                            url: 'https://easy-mock.com/mock/5c09f40d3c098813c612cce6/movie/movieInfo',
+                                            type: 'GET',
+                                            data: {
+                                                movieId: $(this).data('id'),
+                                            },
+                                            success: function (res) {
+                                                console.log(res);
+                                                console.log('qwe');
+
+
+                                                var data = res.data;
+                                                var direct = data
+                                                    .direct;
+                                                var gut = data.gut;
+                                                var mainActor = data
+                                                    .mainActor;
+                                                var screenWriter = data
+                                                    .screenwriter;
+                                                console.log(mainActor);
+
+
+                                                htmlStr =
+                                                    '<div class="mask"><p> ' +
+                                                    direct + '</p><p>' +
+                                                    gut + '</p><p>主演:' +
+                                                    mainActor.reduce(
+                                                        function (prev,
+                                                            curv, index
+                                                        ) {
+                                                            prev += (
+                                                                    index +
+                                                                    1) +
+                                                                curv +
+                                                                '';
+                                                            return prev;
+                                                        }, '') +
+                                                    '</p><p>' +
+                                                    screenWriter +
+                                                    '</p></div>';
+                                                $(htmlStr).appendTo(
+                                                    'body').css({
+                                                    position: 'absolute',
+                                                    left: $(
+                                                            window
+                                                        )
+                                                        .outerWidth() /
+                                                        2,
+                                                    bottom: 100,
+                                                    width: 400,
+                                                    marginLeft:
+                                                        -200,
+                                                });
+                                            }
+                                        });
+                                    }).children().eq(0).attr('src', ele.poster)
+                                    .next().text(ele.name);
+                                $wrapper.append($MoveSection);
+                            })
+                        }
+                    });
+
+                } else {
+
+                }
+
+            }
+        });
+    </script>
+
+
+    <script type="shtml">
+        // deferred 延迟
+
+        var df = $.Deferred();
+
+        // done 成功  fail 失败   progress 正在进行
+        // resolve    reject     notify
+
+        // 注册成功的回调函数
+        df.done(function () {
+            console.log('sucess');
+
+        })
+
+        // 注册失败的回调函数
+        df.fail(function () {
+            console.log('fail');
+        })
+
+        // 注册正在进行的回调函数
+        df.progress(function () {
+            console.log('ing');
+        })
+
+        // 做一件异步的事情
+        setInterval(function () {
+            var score = Math.random() * 100;
+            if (score > 60) {
+                df.resolve();
+
+            } else if (score < 50) {
+                df.reject();
+            } else {
+                df.notify();
+            }
+        }, 1500);
+    </script>
+
+
+
+    <script type="shtml">
+        // then 
+        var df = $.Deferred();
+        df.then(function () {
+            console.log('done');
+
+        }, function () {
+            console.log('fail');
+        }, function () {
+            console.log('peogress');
+        });
+    </script>
+
+
+    <script>
+        (function () {
+            return $.ajax({
+                url: 'https://easy-mock.com/mock/5c09f40d3c098813c612cce6/movie/power',
+                type: 'POST',
+                data: {
+                    username: 'cst',
+                    password: '123123'
+                }
+            })
+        })().then(function (res) {
+            if (res.data.power == 'root') {
+                return $.ajax({
+                    url: 'https://easy-mock.com/mock/5c09f40d3c098813c612cce6/movie/movieList',
+                    type: 'GET',
+                })
+            }
+        }).then(function (res) {
+            var data = res.data;
+            var $wrapper = $('.wrapper');
+            var df = $.Deferred();
+            data.forEach(function (ele, index) {
+                var $MoveSection = $('.tpl').clone().removeClass('tpl')
+                    .addClass('movieSection');
+                $MoveSection.data({
+                        id: ele.id
+                    }).on('click', function () {
+                        df.resolve($(this));
+                    }).children().eq(0).attr('src', ele.poster)
+                    .next().text(ele.name);
+                $wrapper.append($MoveSection);
+            });
+            return df.promise();
+        }).then(function (dom) {
+            return $.ajax({
+                url: 'https://easy-mock.com/mock/5c09f40d3c098813c612cce6/movie/movieInfo',
+                type: 'GET',
+                data: {
+                    movieId: dom.data('id'),
+                }
+            })
+        }).then(function (res) {
+            var data = res.data;
+            var direct = data.direct;
+            var gut = data.gut;
+            var mainActor = data.mainActor;
+            var screenWriter = data.screenwriter;
+            htmlStr = '<div class="mask"><p> ' + direct + '</p><p>' + gut + '</p><p>主演:' +
+                mainActor.reduce(function (prev, curv, index) {
+                    prev += (index + 1) + curv + '';
+                    return prev;
+                }, '') + '</p><p>' + screenWriter + '</p></div>';
+            $(htmlStr).appendTo('body').css({
+                position: 'absolute',
+                left: $(window).outerWidth() / 2,
+                bottom: 100,
+                width: 400,
+                marginLeft: -200,
+            });
+        })
+    </script>
+
+
+
+</body>
+
+</html>

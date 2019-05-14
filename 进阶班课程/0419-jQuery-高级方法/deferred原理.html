@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        jQuery.myDeferred = function () {
+            var arr = [
+                [jQuery.myCallbacks('once memory'), 'done', 'resolve'],
+                [jQuery.myCallbacks('once memory'), 'fail', 'reject'],
+                [jQuery.myCallbacks('memory'), 'progress', 'notify']
+            ];
+            var pendding = true;
+            var deferred = {};
+            for (var i = 0; i < arr.length; i++) {
+                
+                deferred[arr[i][1]] = (function (index) {
+                    return function (func) {
+                        arr[index][0].add(func)
+                    }
+                })(i);
+
+                deferred[arr[i][2]] == (function (index) {
+                    return function () {
+                        var args = arguments;
+                        if (pendding) {
+                            arr[index][0].fire.apply(window, args);
+                            arr[index][2] == 'resolve' || arr[index][2] == 'reject' ? pendding = false :
+                                '';
+                        }
+                    }
+                })(i);
+            }
+            return deferred;
+        }
+    </script>
+
+</body>
+
+</html>

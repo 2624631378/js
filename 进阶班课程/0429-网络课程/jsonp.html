@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        json  数据格式  属性名和值都要用双引号 
+
+        解决跨域的几种方法
+        1、flash (淘汰)
+        2、服务器代理中转  
+        3、jsonp
+        4、document.domain(针对基础域名相同的情况)
+            bj.58.com  document.domain = '58.com'
+            tj.58.com  document.domain = '58.com'
+
+
+
+         服务器代理中转  
+        先向自己同源的服务器请求资源， 由同源的服务器向真实的服务器请求真实数据，跳过浏览器的同源限制
+        
+        
+     -->
+
+    <!-- 
+         jsonp 原理
+
+         src不受同源策略限制   <img>  <script> <iframe> 
+         eg:<img src="https://www.baidu.com/img/bd_logo1.png">
+
+      -->
+
+      <script>
+       var oScript = document.createElement('script');
+       oScript.src = './test.php?cb=aa';
+       document.body.appendChild(oScript)
+
+       var oScript = document.createElement('script');
+       oScript.src = './test.php?cb=bb';
+       document.body.appendChild(oScript)
+
+       function aa(data){
+           console.log(data);           
+       }
+
+       function bb(data){
+           console.log(data);           
+       }
+
+
+      </script>
+
+</body>
+
+</html>

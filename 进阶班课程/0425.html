@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../进阶班课程/jquery.js"></script>
+
+</head>
+
+<body>
+    <style>
+        body { height: 3000px;position: relative; }
+        #edit {width: 100px;height: 100px;border: 1px black solid; position: absolute; }
+    </style>
+    <!-- <div id="edit"></div> -->
+    <script>
+        $(function () {
+            $(window).scroll(function () {
+                var top = $(window).scrollTop() + (document.documentElement.clientHeight - $('#edit').height()) / 2;
+                var left = $(window).scrollLeft() + (document.documentElement.clientWidth - $('#edit').width()) / 2;
+                $('#edit').css({
+                    left: left + 'px',
+                    top: top + 'px'
+                });
+            })
+        })
+    </script>
+
+    <!-- 
+        1.div宽高为100px和100px、body高度为3000px且相对定位，滚动条垂直滚动中使div始终保持在浏览器水平垂直居中的位置。
+     -->
+
+     <!-- 
+         通过jQuery的方法，用事件委托给ul中的li绑定点击事件，点击后弹出li在兄弟元素中的索引
+      -->
+      <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+          <li>6</li>
+          <li>7</li>
+          <li>8</li>
+          <li>9</li>
+          <li>10</li>
+      </ul>
+      <script>
+      $('ul').on('click','li',function(e){
+          alert( $(e.target).index() )
+      })
+      </script>
+
+</body>
+
+</html>

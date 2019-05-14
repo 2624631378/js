@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        1.indexof  遍历原数据，判断新数组中是否包含，如果不包含则放进新数组
+        2.借助对象obj 对象的属性名不重复 
+        3.es6  set 去重  new Set
+        4.排序后相邻去除法 
+
+
+     -->
+    <script type="shtml">
+        // 新建一个数组，遍历去要重的数组，当值不在新数组的时候（indexOf为-1）就加入该新数组中；
+        var arr = [1, 2, 2, 3, 1];
+
+        function uniquel(arr) {
+            var newArr = [];
+            arr.forEach(ele => {
+                if (newArr.indexOf(ele) == -1) {
+                    newArr.push(ele)
+                }
+
+            });
+            console.log(newArr);
+            return newArr;
+        }
+        uniquel(arr);
+    </script>
+
+
+    <script type="shtml">
+        var arr = [1, 2, 2, 3, 1, 4];
+
+        function uniquel(arr) {
+            var newArr = [];
+            var obj = {};
+            var len = arr.length;
+            for (var i = 0; i < len; i++) {
+                if (!obj[arr[i]]) {
+                    newArr.push(arr[i]);
+                    obj[arr[i]] = 1;
+                }
+            }
+            console.log(newArr);
+            console.log(obj);
+            return newArr;
+        }
+        uniquel(arr);
+    </script>
+
+
+    <script type="shtml">
+        // 如果当前数组的第 i 项在当前数组中第一次出现的位置不是 i，那么表示第 i 项是重复的，忽略掉。否则存入结果数组
+        var arr = [0, 2, 2, 2, 4, 3, 1, 4, 0];
+
+        function uniquel(arr) {
+            var newArr = [];
+            var len = arr.length;
+            for (var i = 0; i < len; i++) {
+                console.log(arr[i] + '---' + arr.indexOf(arr[i]) + '---' + arr.lastIndexOf(arr[i]));
+                if (arr.indexOf(arr[i]) == i) {
+                    newArr.push(arr[i]);
+                }
+
+
+            }
+            console.log(newArr);
+
+            return newArr;
+        }
+        uniquel(arr);
+    </script>
+
+    <script type="shtml">
+        // 给传入的数组排序，排序后相同的值会相邻，然后遍历排序后数组时，新数组只加入不与前一值重复的值。
+        var arr = [0, 2, 2,2, 4, 3, 1, 4,0];
+
+        function uniquel(arr) {
+            arr.sort();
+            var newArr = [arr[0]];
+            var len = arr.length;
+            for (var i = 1; i < len; i++) {
+                if (arr[i] != arr[i - 1]) {
+                    newArr.push(arr[i]);
+                }
+            }
+            console.log(newArr);
+            return newArr;
+        }
+        uniquel(arr);
+    </script>
+
+    <script>
+        // 利用ES6 Set去重
+        var arr = [0, 2, 4, 3, 1, 4, 0];
+
+        var newArr = new Set(arr);
+        console.log(newArr);
+    </script>
+
+    <script type="shtml">
+        // 注意 ，此方法是如果      《《《《《《重复则去掉该元素 》》》》》
+        var arr = [0,  2, 4, 3, 1, 4, 0];
+
+        function unique22(arr) {
+            var hash = [];
+            for (var i = 0; i < arr.length; i++) {
+                console.log(arr[i] + '---' + arr.indexOf(arr[i]) + '---' + arr.lastIndexOf(arr[i]));
+                if(arr.indexOf(arr[i])==arr.lastIndexOf(arr[i])){
+                    hash.push(arr[i]);
+                } 
+            }
+            console.log(hash);
+
+            return hash;
+        }
+
+        unique22(arr)   // [2,3,1]
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    outline: none;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background: rgb(236, 235, 145);
+}
+
+.boxDom {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.iddom {
+    width: 100%;
+
+    position: fixed;
+    bottom: 0;
+    background: olive;
+
+}
+
+.content {
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.string {
+    width: 200px;
+    height: 40px;
+    margin-top: 20px;
+    position: absolute;
+    color: #fff; font-size: 36px;
+}

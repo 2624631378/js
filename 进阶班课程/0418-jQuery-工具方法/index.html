@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="../jquery.js"></script>
+
+<body>
+
+    <!-- 
+        $.type(); 里面的数据到底是什么
+        typeof(); 里面的数据是什么类型
+     -->
+    <!-- <script>
+        $.type(null) // null
+        console.log($.isArray([1, 2, 3]));
+
+        .trim() // 去掉前后空格  原生放方法；
+        $.trim() // 去掉前后空格,括号内传值  jq方法
+    </script> -->
+
+    <!-- <div id="demo" style="width:100px;height:100px;background-color:red;position:absolute;left:0;top:0;"></div>
+    <script>
+        // // $.proxy();  改变this指向；  
+
+        // function show() {
+        //     console.log(this);
+
+        // }
+        // var obj = {
+        //     name: "ly",
+        //     age: 123
+        // }
+
+        // var showproxy = $.proxy(show, obj); // 注意此处调用之后改变的形成的是副本，并不改变其本身的方法；
+        // show(); // windows
+        // showproxy(); // 打印出obj
+
+
+        // var list = {
+        //     init: function () {
+        //         this.ms = 123;
+        //         this.dom = document.getElementById('demo');
+        //         this.bindEvent();
+        //     },
+        //     bindEvent: function () {
+        //         this.dom.onclick =$.proxy(this.show, this);
+        //     },
+        //     show: function () {
+        //         console.log(this.produseMs(this.ms));
+        //     },
+        //     produseMs: function (ms) {
+        //         return ms + 234;
+        //     }
+        // }
+
+
+        // $.onconflict(); 防止冲突
+        // 防止变量命名冲突
+    </script> -->
+
+
+    <!-- <script>
+        var arr = [1, 2, 3, 4]
+        // $.each()
+        $.each(arr, function (index, ele) {
+            console.log(ele);
+        })
+    </script> -->
+    <div id="demo" style="width:100px;height:100px;background-color:red;position:absolute;left:0;top:0;"></div>
+
+    <script>
+        // 扩展方法  
+        // 浅层克隆
+        // 深层克隆
+
+        // $.extend(); //加到工具方法
+        // $.fn.extend(); // 加到实例方法里面
+
+        // $.extend({
+        //     definedMandom: function (start, final) {
+        //         var len = final - start;
+        //         return Math.random() * len + start;
+        //     }
+        // })
+
+        $.fn.extend({
+            drag: function () {
+                var disX, disY;
+                var self = this;
+                $(this).on('mousedown', function (e) {
+                    disX = e.pageX - $(this).offset().left;
+                    disY = e.pageY - $(this).offset().top;
+                    $(document).on('mousemove', function (e) {
+                        $(self).css({
+                            left: e.pageX - disX,
+                            top: e.pageY - disY
+                        })
+                    })
+                    $(document).on('mouseup', function (e) {
+                        $(document).off('mousemove').off('mouseup');
+                    })
+                })
+                return this;
+            }
+        })
+
+        $('#demo').drag();
+    </script>
+
+    <!-- <script>
+        $('#demo').on('mousedown', function (e) {
+            var disX, disY;
+            disX = e.pageX - $(this).offset().left;
+            disY = e.pageY - $(this).offset().top;
+            
+            $(document).on('mousemove', function (e) {
+                console.log(disX, disY);
+                $('#demo').css({
+                    left: e.pageX - disX,
+                    top: e.pageY - disY
+                })
+            })
+            $(document).on('mouseup', function (e) {
+                $(document).off('mousemove').off('mouseup');
+            })
+        })
+    </script> -->
+
+
+    <script>
+        // 浅层克隆
+        var obj1 = {
+            lastName: "deng",
+            age: 6,
+            sk: 2,
+            son: {
+                name: 'xiaofan',
+                age: 2
+            }
+        }
+
+        var obj2 = {
+            lastName: "laodeng",
+            age: 50,
+            smoke: true,
+            son: {
+                name: 'xiaozhang',
+                age: 1,
+                sex: "male"
+            }
+        }
+
+        var obj3 = {
+            lastName: "liu",
+            fortune: 100000000
+        }
+
+    $.extend(obj1, obj2)  // 浅层克隆，注意此克隆方式引用值的方式，
+
+
+    // 深层克隆
+   var obj =  $.extend(true, obj1, obj2)
+    </script>
+
+</body>
+
+</html>

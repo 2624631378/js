@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        transition  过渡
+        属性：
+        transition-property 监听变化的值
+       transition-duration  过度的时间
+         transition-timing-function  变化趋势
+          transition-delay  延时执行
+        
+     -->
+    <!-- <div></div>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: chocolate;
+            /* transition: width 5s linear 1s; */
+            transition: width 5s, height 3s;
+        }
+        div:hover{
+            width: 200px;
+            height: 200px;
+        }
+    </style> -->
+
+    <!-- 
+        transition 只能改变一次的动画，初始位置到结束位置
+        animation 多次动画，中间可以添加多次动画  多状态变化的连续动画
+     -->
+
+
+     <!-- 
+         animation
+         0% 可以替换from
+         100% 可以替换成to
+         属性：
+
+      -->
+
+    <div></div>
+    <style>
+        div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: chocolate;
+            animation: run 4s;
+
+        }
+
+        @keyframes run {
+            0% {
+                top: 0;
+                left: 0;
+            }
+
+            25% {
+                left: 100px;
+                top: 0;
+            }
+
+            50% {
+                left: 100px;
+                top: 100px;
+            }
+
+            100% {
+                top: 0;
+                left: 0;
+            }
+        }
+    </style>
+
+</body>
+
+</html>

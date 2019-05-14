@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        盒模型
+
+        混杂模式的盒子
+
+        盒子组成 ： border padding content
+
+        box-sizing
+
+        默认盒模型： 标准盒模型
+
+        boxwidth = width + padding*2 + border*2;
+
+
+        IE6混杂模式盒模型  boeder-box
+        boxwidth = width
+
+        兼容性良好    
+        
+
+     -->
+
+
+    <!-- 
+
+        flex布局
+      -->
+
+    <!-- <div class="wrapper">
+        <div class="content">1</div>
+        <div class="content">2</div>
+        <div class="content">3</div>
+
+    </div>
+    <style>
+        .wrapper {
+            width: 600px;
+            height: 300px;
+            border: 1px solid red;
+            display: flex;
+            /* align-items:center; */
+            
+            flex-wrap: wrap;
+            justify-content:center
+        }
+
+        .content {
+            width: 100px;
+            height: 100px;
+            border: 1px solid green;
+            box-sizing: border-box;
+        }
+    </style> -->
+
+
+
+    <!-- <div class="wrapper">
+            <div class="content">1</div>
+
+    
+        </div>
+        <style>
+            .wrapper {
+                resize: both;
+                overflow: hidden;
+
+                width: 300px;
+                height: 300px;
+                border: 1px solid red;
+                display: flex;
+                align-items:center;
+                justify-content:center
+            }
+    
+            .content {
+                width: 100px;
+                height: 100px;
+                border: 1px solid green;
+                box-sizing: border-box;
+            }
+        </style> -->
+
+
+
+<div class="wrapper">
+        <div class="content">甜蜜</div>
+        <div class="content">淘宝</div>
+        <div class="content">聚划算</div>
+        <div class="content">甜蜜</div>
+
+
+
+    </div>
+    <style>
+        .wrapper {
+            width: 100px;
+            height:200px;
+            border: 1px solid red;
+            /* display: flex;
+            justify-content: space-between;
+  */
+        }
+
+        .content {
+            width:calc(50% - 10px);
+           /* flex: 1 1 auto; */
+            /* height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 20px;
+            border: 1px solid green;
+            box-sizing: border-box; */
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        bug调试方法
+        1、根据报错行号定位
+
+
+        执行中报错，注意函数名是否有误等基本情况
+
+        执行中无报错且无效果，注意传参等情况，变量有误，console输出参数查看是否有误
+
+        断点调试 
+    
+    -->
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <script>
+        var liArray = document.getElementsByTagName('li')
+        for (var i = 0; i < liArray.length; i++) {
+            (function (index) {
+                liArray[i].onclick = function () {
+                    console.log(i , index)
+                    addIndex(this, index)
+                }
+            }(i))
+
+        }
+
+        function addIndex(dom, index) {
+            dom.innerText = parseInt(dom.innerText) + index;
+        }
+    </script>
+
+</body>
+
+</html>

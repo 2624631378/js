@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+
+        div {
+
+            width: 200px;
+            height: 200px;
+            background: rgba(131, 4, 4);
+            position: absolute;
+            top: 1300px;
+            left: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 
+        BOM   浏览器对象模型
+        主要处理浏览器窗口（window）和框架（iframe）
+
+        BOM核心 - window  既是通过js访问浏览器窗口的一个借口，又是一个全局对象。
+
+        BOM和DOM  
+
+        BOM组成
+        1：window javascript 层级中的顶层对象表示浏览器窗口
+        2：Navigation 包含客户端浏览器的信息
+        3：History 包含了浏览器窗口访问过的URL
+        4：location 包含当前URL的信息
+        5: screen 包含客户端显示屏的信息，，兼容性较差，一般不用  
+     -->
+
+    <div id="dom" style=" opacity:0.3;"></div>
+
+    <script>
+        //详解window
+        //window.pageYOffset 表示滚动条离浏览器顶部的高度
+        //offsetTop 当前元素据文档顶部的高度
+        //window.innerHeight  窗口的高度不含滚动条和工具条
+
+        window.onscroll = function () {
+            var oDiv = document.getElementById('dom');
+            var divTop = oDiv.offsetTop;
+
+            if (divTop <= (window.pageYOffset + window.innerHeight)) {
+                var timer = setInterval(() => {
+                    if (oDiv.style.opacity == 1) {
+                        clearInterval(timer)
+                    } else {
+                        oDiv.style.opacity = parseFloat(oDiv.style.opacity) + 0.01;
+                    }
+
+                }, 300);
+            }
+        }
+    </script>
+
+
+<!-- 
+    iframe
+    window.parent 子可获取父级值
+ -->
+
+ <!-- 
+
+ history
+
+ length 表示存储的url的个数
+
+  -->
+
+  <!-- 
+      location
+      host 主机名和端口号
+      hostname  主机名
+      href 完整url
+      pathname 路径部分
+      port 端口号
+      protocol 协议  
+      search 表示参数  包括问号及问号之后的参数
+      hash   表示锚点
+   -->
+
+
+</body>
+
+</html>

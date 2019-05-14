@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js
+    '></script>
+</head>
+
+<body>
+
+    <!-- 
+        show 从隐藏到展示的效果 
+        hide 从展示到隐藏
+        toggle 切换显示状态
+        fadein 淡入，只变化透明度
+        fadeout 淡出，只变化透明度
+        fadeto  变化到到透明度设定的值
+        fadetoggle 以淡入淡出的形式切换显示隐藏状态
+        slidedown  卷出 变化高度
+        slideup   卷入 变化高度
+        slidetoggle 以卷入卷出的形式切换显示隐藏状态
+
+     -->
+
+    <!--
+        animate  动画效果 
+    
+    -->
+    <!-- <style>
+        .demo {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: burlywood;
+            ;
+        }
+    </style>
+    <button id='stopBtn'>stop</button>
+    <button id='finishBtn'>finish</button>
+    <button id='startBtn'>start</button>
+    <div class="demo"></div>
+    <script>
+        $('#startBtn').on('click', function () {
+            $('.demo').animate({
+                width: '+=150',
+                height: '+=150',
+                left: '+=50',
+                top: '+=50'
+            }, 1000, 'easeInElastic', function () {}).animate({
+                width: '+=550',
+                height: '+=150',
+                left: '+=50',
+                top: '-=200'
+            }, 1000, function () {
+
+            })
+        })
+
+        // $('#stopBtn').on('click', function () {
+
+        //     // $('.demo').stop();  //不传参，直接终止当前运动，执行下一个动画
+
+        //     // $('.demo').stop(true); // 传参一个true，停止到当前运动的位置
+
+        //     $('.demo').stop(true,true); // 传参两个true，停止当前运动并瞬间执行到目标点
+        // })
+
+
+        $('#finishBtn').on('click', function () {
+
+            $('.demo').finish(); //无参数，瞬间执行最后一帧的动画
+
+        })
+    </script> -->
+
+
+    <!-- 
+        queue 队列
+     -->
+
+
+
+</body>
+
+</html>

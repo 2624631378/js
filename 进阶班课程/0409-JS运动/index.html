@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        position: absolute;
+        left: 0px;
+        width: 100px;
+        height: 100px;
+        background: red;
+        opacity: 1;
+    }
+
+    #topDiv {
+        top: 200px;
+    }
+
+    #bottomDiv {
+        top: 400px;
+    }
+</style>
+
+<body>
+
+    <!-- <div></div>
+    <span></span>
+    <button id="btn">btn</button>
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+        var oBtn = document.getElementById('btn');
+        var oSpan = document.getElementsByTagName('span')[0];
+        var timer = null;
+
+        oBtn.onclick = function () {
+            startMove(oDiv, oSpan, 7)
+        }
+
+        // function startMove(domStart, domTarget, isSpeed) {
+        //     var timer = null;
+        //     clearInterval(timer)
+        //     var isSpeed = domTarget.offsetLeft - domStart.offsetLeft > 0 ? isSpeed : -isSpeed;
+        //     timer = setInterval(function () {
+        //         console.log(oDiv.offsetLeft);
+        //         if (Math.abs(domTarget.offsetLeft - domStart.offsetLeft) < Math.abs(isSpeed)) {
+        //             clearInterval(timer);
+        //             domStart.style.left = domTarget.offsetLeft + 'px'
+        //         } else {
+        //             domStart.style.left = domStart.offsetLeft + isSpeed + 'px'
+        //         }
+        //     }, 30);
+        // }
+
+
+        function startMove(domStart, domTarget, isSpeed) {
+            clearInterval(timer)
+            var isSpeed1 = null;
+            timer = setInterval(function () {
+                var isSpeed1 = (domTarget.offsetLeft - domStart.offsetLeft) / isSpeed;
+
+                isSpeed1 = isSpeed1 > 0 ? Math.ceil(isSpeed1) : Math.floor(isSpeed1)
+
+
+                if (domStart.offsetLeft == domTarget.offsetLeft) {
+                    // alert('123')
+                    clearInterval(timer);
+                } else {
+                    domStart.style.left = domStart.offsetLeft + isSpeed1 + 'px'
+                }
+            }, 30);
+        }
+    </script> -->
+
+
+    <div id='topDiv'></div>
+    <div id="bottomDiv"></div>
+    <script>
+        var oTopDiv = document.getElementById('topDiv');
+        var oBottomDiv = document.getElementById('bottomDiv');
+
+        var twices = true;
+
+     
+            oTopDiv.onclick = function () {
+
+                if(twices) {
+                    divMove(this, {
+                    width: 400,
+                    height: 400,
+                    left: 400,
+                    top: 400,
+
+                }, 15, function () {
+                    divMove(oBottomDiv, {
+                        width: 400,
+                        height: 400,
+                        left: 900,
+                        top: 400,
+                    }, 15, function () {
+                        alert('you are so tellent')
+                    })
+                })
+                twices = false
+                } else {
+                    alert('the anmiante is over')
+
+                }
+             
+              
+
+
+            }
+
+     
+
+
+
+
+        function getStyle(dom, attr) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(dom, null)[attr];
+            } else {
+                return dom.currentStyle[attr];
+            }
+        }
+
+        function divMove(dom, attrObj, speedX, callback) {
+            clearInterval(dom.timer);
+            var timer = null,
+                scur = null;
+            dom.timer = setInterval(function () {
+                var canNext = true;
+                for (var attr in attrObj) {
+                    var scur = parseInt(getStyle(dom, attr));
+
+                    var speed = (attrObj[attr] - scur) / speedX;
+
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                    dom.style[attr] = scur + speed + 'px'
+                    console.log(dom.style[attr]);
+
+
+                    if (scur != attrObj[attr]) {
+
+                        canNext = false;
+                    }
+
+
+                }
+                if (canNext) {
+                    clearInterval(dom.timer);
+                    callback();
+                }
+
+            }, 30)
+        }
+    </script>
+
+</body>
+
+</html>

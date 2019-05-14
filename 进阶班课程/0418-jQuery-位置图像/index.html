@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery.js"></script>
+</head>
+<style>
+    body {
+        width: 3000px;
+        height: 3000px;
+    }
+</style>
+
+<body>
+    <!-- 
+        offset  即可取值也可赋值，执行完毕之后返回的是对象，包含两个值为left和top， 相对于文档的定位
+        position 取出相对于父级定位的left和top，不可赋值；
+        scrollLeft 即可取值也可赋值
+        scrollTop   即可取值也可赋值
+        width 本身的宽度
+        innerwidth 本身的宽度 + padding
+        outerwidth 本身宽度 + padding + border 
+        outerwidth(true) 本身宽度 + padding + margin + border
+
+     -->
+
+<!-- 
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+    // 遍历  each   注意和foreach 的区别，foreach是遍历数组
+    $('li').each(function (index, ele){
+        $(this).text(index).addClass('demo'+index)
+    })
+    </script> -->
+
+
+    <!-- <p>
+        <span></span>
+        <i></i>
+        <span></span>
+        <i></i>
+        <span></span>
+        <i></i>
+    </p>
+    <script>
+    $('p').children().each(function(index, ele){
+    if(ele.nodeName == 'i'){
+        $(ele).text('i'+index)
+    }else{
+        $(ele).text('span'+index)
+    }
+        
+    })
+    </script> -->
+
+
+    <!-- 
+        index  获取索引
+     -->
+
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery.js"></script>
+</head>
+
+<body>
+    <!-- <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background: orange;
+        }
+    </style>
+    <div class="demo"></div>
+    <script>
+        //on  可绑定任何一个事件类型
+        // 传参： 类型  选择器 参数 handle
+        // $('.demo').on('click', function ()(
+
+        // ))
+
+
+        $('.demo').on('click', {
+            name: 'ly'
+        }, function (e){
+            console.log(e.data)  // { name: 'ly'}
+        })
+    </script> -->
+
+    <!-- <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ul>
+
+    <a href="http://www.baidu.com">http://www.baidu.com</a>
+  
+    <script>
+        // 添加选择器 li ，则点击事件只可作用于该选择器
+        // 同时具有事件委托的作用
+        $('ul').on('click', 'li', function (e) {
+            alert($(e.target).text())
+        });
+
+
+        // one 只执行一次
+        $('a').one('click', function (e) {
+            window.open('http://www.taobao.com');
+            // return false;  // 取消默认事件和冒泡
+            e.preventDefault(); //取消默认事件
+        })
+
+
+
+    </script> -->
+
+
+    <!-- <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background: orange;
+        }
+    </style>
+    <div class="demo"></div>
+    <script>
+        $('.demo').on({
+            click: function () {
+                console.log('click');
+
+            },
+            mouseenter: function () {
+                console.log('mouseenter');
+            },
+            mouseleave: function () {
+                console.log('mouseleave');
+            }
+        })
+    </script> -->
+
+
+
+    <!-- <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background: orange;
+        }
+    </style>
+    <div class="demo"></div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ul>
+
+    <script>
+        // off 解绑事件
+
+        function clickOne() {
+            console.log('1');
+
+        }
+
+        function clickTwo() {
+            console.log('2');
+
+        }
+        $('.demo').on('click', clickOne);
+        $('.demo').on('click', clickTwo);
+
+
+        function mouseenterkOne() {
+            console.log('3');
+
+        }
+
+        function mouseleaverTwo() {
+            console.log('4');
+
+        }
+        $('.demo').on('mouseenter', mouseenterkOne);
+        $('.demo').on('mouseleave', mouseleaverTwo);
+
+
+
+        // $('.demo').off(); //解绑所有事件
+        // $('.demo').off('click'); //解绑所有的click事件
+        $('.demo').off('click', clickTwo); //解绑click事件的clickTwo方法
+
+        $('ul').on('click', 'li', clickTwo)
+        $('ul').off(); // 直接解绑父级元素的事件
+        $('ul').off('click', 'li', clickTwo) // 通过绑定的方式进行解绑
+    </script> -->
+
+
+
+    <!-- <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background: orange;
+        }
+    </style>
+    <div class="demo"></div>
+
+    <script>
+        //trigger  主动触发事件
+
+        // // 自定义事件
+        // $('.demo').on('pageLoad', function () {
+        //     console.log('123');
+
+
+        // })
+        // $('.demo').trigger('pageLoad')
+
+        //trigger 
+
+        // hover 相当于同时绑定mouseenter和mouseleaver
+
+        $('.demo').on('mouseenter', function () {
+            console.log('123');
+        }).on('mouseleave', function () {
+            console.log('456');
+        })
+
+        $('.demo').hover(function () {
+            console.log('89');
+        }, function () {
+            console.log('78');
+        })
+    </script> -->
+
+</body>
+
+</html>

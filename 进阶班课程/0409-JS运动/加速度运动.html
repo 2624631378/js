@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<style>
+    div {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        width: 100px;
+        height: 100px;
+        background: blueviolet;
+    }
+</style>
+
+<body>
+    <div></div>
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+        oDiv.onclick = function () {
+            startMove(this, 20, 2)
+        }
+        function startMove(dom, speedX, aX) {
+            var timer = null;
+            clearInterval(dom.timer)
+            var isSpeed = speedX;
+            var a = aX;
+            dom.timer = setInterval(function () {
+                isSpeed = isSpeed + a;
+                dom.style.left = dom.offsetLeft + isSpeed + 'px'
+            }, 30)
+        }
+    </script>
+</body>
+
+</html>

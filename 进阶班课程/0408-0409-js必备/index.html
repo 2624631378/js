@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        浏览器基本组成
+
+        用户界面
+        浏览器引擎
+        渲染引擎
+        js引擎
+        网络
+        UI后端
+        数据存储
+     -->
+
+    <!-- 
+
+        渲染引擎
+        从模型生成图像  
+        在浏览器中显示所请求的内容
+
+        过程： 解析HTML树从而勾建DOM树 --》 css Rule 树  --》 构建 Render树  --》 布局 Render 树  --》 绘制Render树
+
+      -->
+    <!-- 
+          浏览器怪异模式和标准模式
+
+       -->
+
+    <!-- 
+           trim() 字符串方法去除首尾空格
+        -->
+    <div class="active"></div>
+    <div id="demo"></div>
+    <div class="wrapper" id="ow">
+        <div id=" fined kl "></div>
+        <p class=" demo    box   active " id="     box   active  en">
+            <span class="    demo    "></span>
+            <span class="    demo  active  "></span>
+        </p>
+        <p class="demodemo   demo   box   " id=" demodemo      box   ">
+            <span class="    demo1"></span>
+
+        </p>
+    </div>
+    <!-- <script>
+        //getElementsByClassName本身在Document和Element上具备
+        Document.prototype.getElementsByClassName = Element.prototype.getElementsByClassName = function (_className) {
+            //获取document下面的所有标签
+            var allDomArray = this.getElementsByTagName('*'); // 通过通配符
+            console.log(allDomArray);
+            
+            var lastDomArray = [];
+
+            function triSpace(strClassName) {
+                var reg = /\s+/g;
+                var newStrClassName = strClassName.replace(reg, ' ');
+                return newStrClassName;
+            }
+            for (var i = 0; i < allDomArray.length; i++) {
+                // console.log(allDomArray[i], allDomArray[i].className);
+                var lastStrClassName = triSpace(allDomArray[i].className).trim();
+                var classArray = lastStrClassName.split(' ');
+                for (var j = 0; j < classArray.length; j++) {
+                    if (classArray[j] == _className) {
+                        lastDomArray.push(allDomArray[i]);
+                        break;
+                    }
+                }
+
+
+            }
+            console.log(lastDomArray)
+            return lastDomArray;
+        }
+        var ow = document.getElementById('ow')
+        ow.getElementsByClassName('active');
+        document.getElementsByClassName('active');
+    </script> -->
+
+
+    <script>
+        function getDom(str) {
+            var allDomArray = document.getElementsByTagName('*');
+            var str = str.toLowerCase();
+            var lastDomArray = [];
+
+            function triSpace(strClassName) {
+                var reg = /\s+/g;
+                var newStrClassName = strClassName.replace(reg, ' ');
+                return newStrClassName;
+            }
+            for (var i = 0; i < allDomArray.length; i++) {
+                var lastStrClassName = allDomArray[i].className;
+                lastStrClassName += ' ';
+                var lastStrId = allDomArray[i].id;
+                lastStrId += ' ';
+                var lastStrTagName = allDomArray[i].tagName.toLowerCase();
+                lastStrTagName += ' ';
+                var newArray = lastStrClassName.concat(lastStrId, lastStrTagName);
+                newArray = triSpace(newArray).trim();
+                var classArray = newArray.split(' ');
+                for (var j = 0; j < classArray.length; j++) {
+                    if (classArray[j] == str) {
+                        lastDomArray.push(allDomArray[i]);
+                        break;
+                    }
+                }
+            }
+            console.log(lastDomArray)
+            return lastDomArray;
+        }
+        getDom('sPan')
+    </script>
+
+
+</body>
+
+</html>

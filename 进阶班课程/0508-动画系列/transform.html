@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        scale(x,y);  伸缩   伸缩的是此元素的变化坐标轴的刻度  可以叠加操作，，写两个scale 后面一的scale继承前面的一个缩放  eg  scale（0.5 0.5 ） scale（3 3 ） 实际上缩放了1.5倍
+        scalex()
+        scaley()
+        scalez()
+        scale3d()
+     -->
+
+     <!-- skew
+    skew(x,y)
+
+    -->
+
+    <style>
+        div {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-image: url('http://pic75.nipic.com/file/20150821/9448607_145742365000_2.jpg');
+            background-size: cover;
+            left: 400px;
+            top: 400px;
+            transform-origin: 0 0;
+            transform:skew(45deg,0deg);
+        }
+    </style>
+
+    <div>
+
+
+    </div>
+
+</body>
+
+</html>

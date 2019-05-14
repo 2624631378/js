@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 500px;
+            height: 400px;
+            position: absolute;
+            background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553765255207&di=26cb88ddde71c2454d5259dba2398a76&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F11%2F67%2F86%2F60f58PIC834.jpg');
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            padding:10px 50px;
+        }
+
+        #ulList li {
+            list-style: none;
+            padding: 10px;
+            border-bottom: 1px solid;
+            display: flex;
+            align-items: center
+        }
+
+        #ulList li img {
+
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        input {
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        button {
+            height: 34px;
+            line-height: 34px;
+            width: 50px;
+            font-size: 16px;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+        <input type="text" id="ip"> <button id="btn">男</button><button id="all">all</button>
+        <ul id="ulList">
+
+        </ul>
+    </div>
+
+    <script>
+        myarr = [{
+                name: "王哇零零",
+                scr: 'http://img0.pconline.com.cn/pconline/1511/29/7257120_901_thumb.jpg',
+                laber: '大头发',
+                xb: "M"
+            },
+            {
+                name: "王1方式",
+                scr: 'http://s14.sinaimg.cn/mw690/0076ogogzy7oTQE7eCp0d&690',
+                laber: '发飞洒发',
+                xb: "M"
+            },
+            {
+                name: "爱我疼我",
+                scr: 'http://img.52z.com/upload/news/image/20180129/20180129092450_61533.jpg',
+                laber: '是否非官方',
+                xb: "w"
+            },
+            {
+                name: "法国吧",
+                scr: 'http://b-ssl.duitang.com/uploads/item/201510/05/20151005144251_LXtsH.jpeg',
+                laber: '你们， ',
+                xb: "M"
+            },
+            {
+                name: "案说法",
+                scr: 'http://imgsrc.baidu.com/imgad/pic/item/bba1cd11728b47104c5c00e9c9cec3fdfc0323a0.jpg',
+                laber: '大概后天如果',
+                xb: "w"
+            },
+
+
+        ]
+
+        window.onload = function () {
+            listShow('', myarr);
+        }
+
+        var inp = document.getElementById('ip');
+        var ulList = document.getElementById('ulList');
+        var btn = document.getElementById('btn');
+        var all = document.getElementById('all');
+
+        inp.oninput = function () {
+            listShow(this.value, myarr)
+        }
+
+        btn.addEventListener('click', function () {
+            listShow('w', myarr);
+            inputValue()
+
+        })
+        all.addEventListener('click', function () {
+            listShow('', myarr);
+            inputValue();
+
+        })
+
+        function listShow(a, arr) {
+            var inpArr = textFilter(a, arr)
+            var htmllist = '';
+            for (var i = 0; i < inpArr.length; i++) {
+                htmllist += '<li><img src=" ' +
+                    inpArr[i].scr +
+                    ' "> <span><b> ' +
+                    inpArr[i].name +
+                    '</b></span> ----<span> ' +
+                    inpArr[i].laber +
+                    ' </span> </li>'
+            }
+            ulList.innerHTML = htmllist
+        }
+
+        function textFilter(text, arr) {
+            var newarr = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i].name.indexOf(text) != -1 || arr[i].laber.indexOf(text) != -1 || arr[i].xb == text) {
+                    newarr.push(arr[i])
+
+                }
+            }
+            return newarr;
+        }
+
+        function inputValue() {
+            inp.value = ''
+        }
+    </script>
+</body>
+
+</html>

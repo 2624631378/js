@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        jQuery.prototype.myQueue = function (type, handle) {
+            var queueObj = this;
+            var queueName = type || 'fx';
+            var addFunc = handle || null;
+            var len = arguments.length;
+
+            if (len == 1) {
+                return queueObj[0][queueName];
+            }
+            queueObj[0][queueName] == undefined ? queueObj[0][queueName] = [addFunc] : queueObj[0][queueName].push(
+                addFunc);
+            return this;
+        }
+
+        jQuery.prototype.myDequeue = function (type) {
+            var self = this;
+            var queueName = arguments[0] || 'fx';
+            var queueArr = this.myQueue(queueName);
+            var currFunc = queueArr.shift();
+            if (currFunc == undefined) {
+                return;
+            }
+            var next = function () {
+                self.myDequeue(queueName);
+            }
+            currFunc(next);
+            return this;
+        }
+    </script>
+
+</body>
+
+</html>

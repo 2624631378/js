@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 
+        事件代理：利用事件冒泡，管理某一类的程序
+
+        event target
+
+     -->
+     <ul id="ul1">
+         <li>1</li>
+         <li>2</li>
+         <li>3</li>
+         <li>4</li>
+         <li>5</li>
+     </ul>
+     <script>
+         var oUl = document.getElementById('ul1');
+         oUl.onclick = function(ev) {
+             var ev = ev || window.event;
+             var target = ev.target || ev.srcElement;
+             if(target.nodeName.toLowerCsae() == 'li'){
+                 alert(target.innerHTML)
+             }
+         }
+     
+     </script>
+
+     <div id="box">
+
+        <input type="text" id="add">
+     </div>
+    
+</body>
+</html>

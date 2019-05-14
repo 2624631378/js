@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动画</title>
+
+    <style>
+
+        #d1 {
+
+            width: 200px;
+            height: 200px;
+            background: red;
+            animation: move 5s  ;
+            animation-fill-mode:both
+
+                    }
+
+        @keyframes move {
+
+            0% {
+                width: 200px;
+                /* transform:width 2s; */
+
+            }
+
+
+            100% {
+                width: 400px;
+                /* transform:width 2s; */
+
+            }
+
+
+        }
+    
+    
+    </style>
+</head>
+
+<body>
+    <!-- 
+    动画的使用步骤：
+    1.声明动画：创建一个动画，指定一个名字，写一个关键帧 
+    2.为元素调用动画
+ 
+    1）声明动画：样式表中，使用@keyframes规则  
+              eg： @keyframes 动画名称 {
+                1、时间 （相对时间/一般用百分比表示）
+                2、样式
+              }
+
+              @keyframes 动画名称 {
+               0% { 
+
+                     动画开始的时候元素样式
+
+                }
+               100% {
+
+                     动画结束的时候元素样式
+
+                 }
+              }
+
+              兼容写法：
+
+              @-webkit-keyframe move {
+
+
+              }
+
+
+    2) 调用动画:
+    
+    1.animation-name    调用的动画名称
+    2.animation-duration  动画完成一个周期所需要的时长，一般以s或者ms为单位
+
+
+    3）速度时间曲线函数  animation-timing-function
+    1.ease   默认值  慢-快-慢
+    2.lineaer  匀速
+    3.ease-in 慢-加速
+    4.ease-out 快-减速
+    5.ease-in-out 慢-加-减-慢
+
+    4）animation-delay   指定当前动画的播放延迟
+    1.以s或者ms为单位
+
+    5）animation-iteration-count  指定动画的播放次数
+    1.默认值 1 只播放一次
+    2.自定义取值  指定播放次数
+    3.循环播放 infinite
+
+    6）animation-direction   指定动画播放的方向
+    1.normal 正常播放
+    2.reverse 反向播放
+    3.alternate  动画应该轮流反向播放
+
+
+    7)综合写法：
+    animation：name duration [timing-function delay iteration-count direction]
+    中括号内的可省略
+
+
+    8）animation-fill-mode 动画的填充模式
+    1.none 无效果
+    2.forwards  播放完成动画保持在最后一帧的状态
+    3.backwards 播放完成动画保持在第一帧的状态
+    4.both
+
+    9） animation-play-state  当前动画是否播放（暂停或者播放）
+    1.paused 动画暂停
+    2.running 动画播放
+
+
+    
+
+-->
+
+<div id="d1">
+
+
+</div>
+
+</body>
+
+</html>

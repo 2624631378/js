@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    ul {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    ul li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 120px;
+        height: 60px;
+        background: burlywood;
+        list-style: none;
+        border: orchid solid 1px;
+    }
+
+    ul li.bg {
+        position: absolute;
+        background: palegreen;
+        opacity: 0.5;
+    }
+</style>
+
+<body>
+
+    <ul>
+        <li class="cbl">1</li>
+        <li class="cbl">2</li>
+        <li class="cbl">3</li>
+        <li class="cbl">4</li>
+        <li class="bg"></li>
+    </ul>
+    <script>
+        var oLiArray = document.getElementsByTagName('li');
+        var oBg = oLiArray[oLiArray.length - 1];
+
+
+        for (var i = 0; i < oLiArray.length - 1; i++) {
+            oLiArray[i].onmouseenter = function () {
+                startMove(oBg, this.offsetLeft)
+            }
+        }
+
+        function startMove(dom, target) {
+            var timer = null;
+            clearInterval(dom.timer);
+            var speed = 0;
+            dom.timer = setInterval(function () {
+                var a = (target - dom.offsetLeft) / 7;
+                speed += a;
+                speed *= 0.8;
+                if (Math.abs(speed) < 1 && Math.abs(target - dom.offsetLeft) < 1) {
+                    clearInterval(timer);
+                    dom.style.left = target + 'px'
+                } else {
+                    dom.style.left = speed + dom.offsetLeft + 'px'
+                }
+            }, 30)
+        }
+    </script>
+
+</body>
+
+</html>

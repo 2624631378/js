@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .banner {
+            width: 300px;
+            height: 150px;
+            outline: 20px solid yellow;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="banner">
+
+    </div>
+    <script src="./lib/banner.js"></script>
+    <script>
+        var imgArr = [{
+                url: './images/banner1.png',
+                link: 'http://www.9dcj.com'
+            },
+            {
+                url: './images/banner2.png',
+                link: 'http://www.9dcj.com'
+            },
+            {
+                url: './images/banner3.png',
+                link: 'http://www.9dcj.com'
+            },
+        ]
+        var oBanner = document.getElementsByClassName('banner')[0];
+
+        createBannerArea(oBanner, imgArr);
+    </script>
+
+</body>
+
+</html>

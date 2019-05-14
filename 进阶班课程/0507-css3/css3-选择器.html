@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=cssNext, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        选择器：
+        关系选择器
+        属性选择器
+        伪类选择器
+     -->
+
+    <!-- 
+         关系选择器
+         div > span {
+            直接子元素  
+         }
+
+         E + F 
+         下一个满足条件的兄弟元素节点,只选中第一个满足条件的
+         eg:
+          <style>
+        div+span {
+            background: brown;
+        }
+    </style>
+    <div></div>
+    <span>1</span>   // 背景颜色变
+    <span>2</span>
+    <span>3</span>
+
+ E ~ F
+ 满足条件的兄弟元素节点,所有满足条件的
+ 注意只有兄弟节点
+ eg:
+    <style>
+            div~span {
+                background: brown;
+            }
+        </style>
+        <div></div>
+        <span>1</span>   // 背景颜色变
+        <span>2</span>   // 背景颜色变
+        <span>3</span>      // 背景颜色变
+         
+      -->
+
+
+    <!-- 
+          属性选择器
+          E[attr ~= "val"]  选择符合属性名，且属性值里面有独立val的
+          E[attr |= "val"]  选择符合属性名，且以val或者val-开头的
+          E[attr ^= "val"]  选择符合属性名，且以val开头的
+          E[attr $= "val"]  选择符合属性名，且以val结尾的
+          E[attr *= "val"]  选择符合属性名,且包含val的
+       -->
+
+
+    <!-- 
+           伪元素选择器
+           E::placeholder  改变输入框提示文字的样式  eg: input::placeholder {color:yellow;}
+           E::selection    改变鼠标滑过选中的样式，只能设置color background-color  text-shadow
+
+        -->
+
+    <!-- 
+          伪类选择器  被选中的元素的状态
+
+            E:not(s)  不是所选元素的选择器  eg: div:not(.test)
+         -->
+    <!-- 
+    <div class="demo"> 1 </div>
+    <div class="test"> 2</div>
+    <div class="demo">4
+
+        <div class="test"> 41</div>
+    </div>
+    <div class="test"> 3</div>
+    <div>5</div>
+
+    <style>
+        /* div:not(.test){
+        background: yellowgreen
+    } */
+
+
+
+        /* 没有class= "demo"的div */
+        div:not([class="demo"]) {
+            background: yellowgreen
+        }
+
+
+        /* 没有class的div */
+        div:not([class]) {
+            background: red
+        }
+    </style>
+
+
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+</ul>
+<style>
+ul{
+    width: 300px;
+    border:1px solid red;
+}
+li{
+    height: 50px;
+    margin: 0 5px;
+  
+}
+li:not(:last-of-type){
+    border-bottom: 1px solid red;
+}
+</style> -->
+
+
+
+    <!-- 
+    :root 选择根节点 , 在html中跟html相同
+ -->
+
+
+
+
+      
+    <!-- 
+     :target 
+  -->
+    <!-- <div class="button">
+        <a href="#red" class="bgred">bgred</a>
+        <a href="#green" class="bgreen">bgreen</a>
+        <a href="#gray" class="bggray">bggray</a>
+    </div>
+
+    <div id="red"></div>
+    <div id="green"></div>
+    <div id="gray"></div>
+    <style>
+        :root,
+        body {
+            height: 100%; margin: 0; position: relative;
+        }
+
+        #red,
+        #green,
+        #gray {
+            width: 100%;
+            height: 100%;
+        }
+
+        div[id]:not(:target){
+            display: none;
+        }
+
+        #red{
+        background: red;
+        }
+        #green{
+        background: green;
+        }
+
+        #gray{
+        background: gray;
+        }
+
+
+        div.button {
+            position: absolute;
+            top: 400px;
+            width: 600px;
+        }
+    </style> -->
+
+
+
+         <!-- 
+             考虑其他元素对他们的影响
+             first-child
+             lasr-child
+             only-child
+             nth-child()
+             nth-last-child()
+          -->
+
+
+          <!-- 
+              :first-of-type
+              :last-of-type
+              :only-of-type
+              :nth-of-type()
+              :nth-of-last-type()
+           -->
+
+           <!-- 
+               :empty  空元素节点,,如果只有注释则也算空元素节点    有空格不算空元素节点
+               :checked  选中的元素
+               :enbale    可用的元素
+               :disabled  不可用的元素
+            -->
+
+            <input type="checkbox">hah
+            <span></span>
+            <style>
+            /* input:checked {
+                width: 100px; height: 100px;
+            } */
+            input:checked + span{
+                /* color: brown; */
+            }
+            input:checked + span::after{
+               content: "hahhah";
+               background: yellowgreen;color: brown;
+            }
+
+            </style>
+
+
+<!-- 
+    :read-only
+    :read-write 
+ -->
+
+
+
+
+</body>
+
+</html>

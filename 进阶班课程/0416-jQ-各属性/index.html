@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <ul>
+            <li>1</li>
+            <li>7</li>
+            <li>6</li>
+            <li>5</li>
+            <li>8</li>
+        </ul>
+    </div>
+
+    <ul>
+        <li>2</li>
+        <li>3</li>
+        <li></li>
+        <li></li>
+        <li>4</li>
+    </ul>
+
+    <script>
+        // get 从集合里面取出指定的元素，返回的是原生dom，传参如果为负数则从尾部开始计算，如果是正数，则从头部开始计算；如果不传参数则返回所有的集合，返回的是数组
+
+        console.log($('.demo').get(1)); // 返回demo第二项原生dom， <div class="demo">2</div>
+
+        console.log(typeof $('.demo').get());
+
+
+        // find  filter  not has is 
+
+        // $('.demo').is('ul')  判断demo里面是否包含ul，返回的值是布尔值，如果包含则返回true，否则返回false；
+
+        //add 
+
+        $('.wrapper').add('ul').css({
+            color: 'red'
+        }); // 所有的ul和wrapper都设置颜色为red
+
+
+        //end 
+    </script>
+    <div class="demo">123</div>
+    <script>
+        // css prop 
+        $('.demo').css({
+            width: '100px',
+            height: '100px',
+            background: 'red'
+        })
+    </script>
+
+    <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background: blue;
+            margin: 10px;
+        }
+        .demo.active{
+            background: cadetblue;
+        }
+    </style>
+
+    <div class="demo"></div>
+    <div class="demo"></div>
+    <div class="demo"></div>
+    <script>
+
+        // $('.demo').click(function () {
+        //     $('.demo').removeClass('active');
+        //   $(this).addClass('active');
+          
+        // })
+
+
+        $('.demo').click(function () {
+            $('.demo').css({background:'blue'});
+          $(this).css({background:'cadetblue'});
+          
+        })
+
+
+    </script>
+
+
+<script>
+//value
+
+// .val 获取表单相关的val
+
+
+// 
+$('from').serialize()
+
+
+
+
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+
+      由于浏览器厂商实现新属性的时间不一样，所以产生了私有属性，先实现新属性的厂商添加了私有前缀
+      -webkit-
+      -ms-
+      -0-
+      -moz-      
+      随着属性的遍及各大浏览器厂商实现新属性，则开始同时识别带前缀的和不带前缀的属性
+
+      http://css.doyoe.com/  参考手册
+      https://caniuse.com/#search=trans  权威手册
+
+      
+
+      预处理器 pre-processor   less/sass  cssNext
+
+      先按照语法格式书写，之后编译成可执行的文件
+
+        cssNext 用来实现一些未来的标准的，目前没有完全在各大浏览器实现
+
+      后处理器 post-processor  autoprefixer
+      在提供的环境下先写出可执行的文明，然后在这个文件上面自动补全
+
+      postCss
+      用js实现的css的抽象语法树  是一个工具
+      最典型的两个插件 ： autoprefixer和cssNext
+
+
+
+    -->
+    <style>
+        div {
+            transition: initial;
+        }
+    </style>
+    <div></div>
+</body>
+
+</html>

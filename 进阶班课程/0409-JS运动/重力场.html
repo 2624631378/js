@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        width: 100px;
+        height: 100px;
+        background: blueviolet;
+    }
+</style>
+
+<body>
+    <div></div>
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+        oDiv.onclick = function () {
+            startMove(this, 6, 8, 4, 0.5)
+        }
+
+        function startMove(dom, speedx, speedy, ax, fns) {
+            var timer = null;
+            clearInterval(dom.timer);
+            var speedX = speedx;
+            var speedY = speedy;
+            var a = ax;
+            dom.timer = setInterval(function () {
+                speedY += a;
+                newTop = dom.offsetTop + speedY;
+                newLeft = dom.offsetLeft + speedX;
+
+                if (newTop >= document.documentElement.clientHeight - dom.clientHeight) {
+                    speedY *= -1;
+                    speedY *= fns;
+                    speedX *= fns;
+                    newTop = document.documentElement.clientHeight - dom.clientHeight;
+                }
+                if (newTop <= 0) {
+                    speedY *= -1;
+                    speedY *= fns;
+                    speedX *= fns;
+                    newTop = 0;
+                }
+                if (newLeft >= document.documentElement.clientWidth - dom.clientWidth) {
+                    speedX *= -1;
+                    speedY *= fns;
+                    speedX *= fns;
+                    newLeft = document.documentElement.clientWidth - dom.clientWidth;
+                }
+                if (newLeft <= 0) {
+                    speedX *= -1;
+                    speedY *= fns;
+                    speedX *= fns;
+                    newLeft = 0;
+                }
+                console.log('speedX:'+ speedX, "speedY:"+speedY, Math.abs(speedY));
+
+                if (newTop == document.documentElement.clientHeight - dom.clientHeight && Math.abs(speedX) <
+                    1 && Math.abs(speedY) < 1) {
+                    clearInterval(dom.timer);
+                } else {
+                    dom.style.top = newTop + 'px';
+                    dom.style.left = newLeft + 'px';
+
+                }
+
+
+
+            }, 30)
+        }
+    </script>
+
+</body>
+
+</html>
