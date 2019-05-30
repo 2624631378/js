@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        构建工具
+        1，基于任务运行的工具： grunt gulp
+        2，基于模块化打包的工具： browserify webpack rollup
+        3，整合型工具：yeoman FIS jdf athena
+     -->
+     <!-- 
+         webpack
+         安装node 安装git
+         npm install webpack -g 全局安装webpack
+         npm install webpack-cli -g  全局安装webpack-cli  // 注意webpack4.0版本之后必须要独立安装webpack-cli，之前的版本是一次性全装好了；
+
+         webpack 打包命令
+
+         webpack 4.0 之后支持无配置直接打包
+
+
+         webpack *.js -o  *.js  指定js打包到相应的js
+         
+      -->
+
+      <!-- 
+
+        最好是下载一个全局的webpack，然后在项目中再创建一个webpack便于开发
+         eg npm install webpack --save-dev 在相应的目录安装开发环境的webpack
+        
+         拿到新项目 npm init初始化项目，生成package.json文件，记录所有的插件
+
+         拿到别人的项目操作步骤  打开git 执行npm install 执行npm install的时候，npm会自动按照项目中的package.json文件中的插件及版本下载安装依赖
+       -->
+
+       <!-- 
+           处理less文件的时候，需要先安装less less-loader css-loader style-loader 模块
+        -->
+
+        <!-- 
+            插件：
+            webpack-deep-scope-plugin 打包时去掉无关js 
+
+            mini-css-extract-plugin 抽离css成单独的css文件
+
+            PurifyCSSPlugin 去掉无关的css样式
+
+            cssnano  压缩css
+            postcss 添加前缀
+         -->
+
+         <!-- 
+             创建流程：
+             git bash 
+             npm init 
+             npm install webpack
+             创建webpack.config.js
+             进行配置
+             
+          -->
+
+          <!-- 
+              抽离html 自动引用文件
+              html-webpack-plugin
+           -->
+
+           <!-- 
+               插件 clean-webpack-plugin  只保留当次打包的文件，，
+            -->
+
+            <!-- 
+                url-loader //处理图片 
+                img-loader // 压缩图片
+                注意压缩图片之前需要下载相应的图片压缩方式等  imagemin-gifsicl
+
+                html-loader 处理html文件中引用的图片
+             -->
+
+             <!-- 
+                 webpack配置本地服务器
+                 下载全局的webpack-dev-server     npm install webpack-dev-server -g
+                 然后再局部安装这个插件npm install webpack-dev-server -D
+
+                 执行 webpack-dev-server 运行服务器
+                 执行 webpack-dev-server --open  运行服务器且自动打开页面
+              -->
+
+              <!-- 
+                  热跟新 HotModuleReplacementPlugin  
+                  支持 style-loader 不支持抽离单独的css文件更新
+                  支持js热跟新
+               -->
+
+               <!-- 
+                   npm install 直接根据package.json 里面的包下载依赖
+                -->
+
+                <!-- 
+                    环境变量：
+                    方式一：
+                    设置不同的配置文件，然后指定开发环境或者生产环境进行编译
+                    webpack --config webpack-dev.config.js
+
+
+                    方式二：
+                    在package.json中配置不同的打包命令
+                 -->
+
+
+
+      </body>
+
+</html>

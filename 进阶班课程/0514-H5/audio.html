@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        .video_player {
+            position: relative;
+            width: 1000px;
+            height: 500px;
+            margin: 0 auto;
+        }
+
+        video {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1000px;
+            height: 500px;
+        }
+
+        .meenu {
+            width: 100%;
+            height: 50px;
+            position: absolute;
+            bottom: 0;
+            background: rgba(17, 236, 36, 0.925);
+            display: none;
+        }
+
+        .play {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            border: 1px solid #abcdef;
+            border-radius: 10px;
+            text-align: center;
+            top: calc(50% - 15px);
+            cursor: pointer;
+        }
+
+        .beisu {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            border: 1px solid #abcdef;
+            border-radius: 10px;
+            text-align: center;
+            top: calc(50% - 15px);
+            cursor: pointer;
+            left: 300px;
+        }
+
+        .voladd {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            border: 1px solid #abcdef;
+            border-radius: 10px;
+            text-align: center;
+            top: calc(50% - 15px);
+            cursor: pointer;
+            left: 500px;
+        }
+
+        .volins {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            border: 1px solid #abcdef;
+            border-radius: 10px;
+            text-align: center;
+            top: calc(50% - 15px);
+            cursor: pointer;
+            left: 650px;
+        }
+
+        .qping {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            border: 1px solid #abcdef;
+            border-radius: 10px;
+            text-align: center;
+            top: calc(50% - 15px);
+            cursor: pointer;
+            left: 750px;
+        }
+
+        .fanhui {
+
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            border: 1px solid #abcdef;
+            border-radius: 10px;
+            text-align: center;
+            top: calc(50% - 15px);
+            cursor: pointer;
+            left: 850px;
+
+        }
+
+        .time {
+            position: absolute;
+            width: 120px;
+            height: 30px;
+            border-radius: 10px;
+            text-align: center;
+            top: calc(50% - 15px);
+            cursor: pointer;
+            margin-left: 120px;
+        }
+
+        .jindu {
+            width: 100%;
+            height: 2px;
+            top: -2px;
+            position: absolute;
+            background: yellow;
+        }
+
+        .jindu div {
+
+            height: 100%;
+            background: tomato;
+            position: absolute;
+        }
+
+        .jindu i {
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+
+            top: -2px;
+        }
+
+        .beisu_list {
+            position: absolute;
+            width: 100px;
+            height: 120px;
+            left: 300px;
+            top: -120px;
+            background: rgba(255, 255, 0, 0.36);
+            display: none;
+        }
+
+        .beisu_list li {
+            position: relative;
+            width: 100%;
+            list-style: none;
+            height: 30px;
+            cursor: pointer;
+
+        }
+
+        .beisu_list li:hover {
+            color: steelblue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <audio src="./邓哥奇遇记开头.mp4" controls></audio> -->
+    <!-- <video src="./邓哥奇遇记开头.mp4" controls></video> -->
+
+
+    <div class="video_player">
+        <video src="./邓哥奇遇记开头.mp4"></video>
+        <div class="meenu">
+
+            <div class="play">play</div>
+
+            <div class="time">00:00 / 00:00</div>
+            <div class="jindu">
+                <div></div>
+                <i></i>
+            </div>
+            <div class="beisu">beisu</div>
+            <div class="beisu_list">
+                <ul>
+                    <li>nomare</li>
+                    <li>1.25</li>
+                    <li>1.5</li>
+                    <li>2</li>
+                </ul>
+            </div>
+            <div class="voladd">vol add</div>
+            <div class="volins">volins</div>
+
+            <div class="qping">qping</div>
+            <div class="fanhui">fanhui</div>
+
+        </div>
+    </div>
+
+    <script>
+        var videoPlayer = document.getElementsByClassName('video_player')[0];
+        var video = document.getElementsByTagName("video")[0];
+        var meenu = document.getElementsByClassName('meenu')[0];
+        var play = document.getElementsByClassName('play')[0];
+        var time = document.getElementsByClassName('time')[0];
+        var jindu = document.getElementsByClassName('jindu')[0];
+
+        var beisu = document.getElementsByClassName('beisu')[0];
+        var beisu_list = document.getElementsByClassName('beisu_list')[0];
+
+        var voladd = document.getElementsByClassName('voladd')[0];
+        var volins = document.getElementsByClassName('volins')[0];
+
+        var qping = document.getElementsByClassName('qping')[0];
+        var fanhui = document.getElementsByClassName('fanhui')[0];
+
+        qping.onclick = function () {
+            var dom = document.documentElement;
+            if (dom.fullscreenElement) {
+                document.exitFullscreen()
+            } else {
+                dom.requestFullscreen()
+            }
+            videoPlayer.style.width = "100%";
+            videoPlayer.style.height = "100%";
+            video.style.width = "100%";
+            video.style.height = "100%";
+        }
+
+        fanhui.onclick = function () {
+            var dom = document.documentElement;
+            dom.exitFullscreen();
+            videoPlayer.style.width = "100%";
+            videoPlayer.style.height = "100%";
+            video.style.width = "100%";
+            video.style.height = "100%";
+        }
+
+
+
+        voladd.onclick = function () {
+            if (video.volume + 0.1 > 1) {
+                video.volume = 1;
+            } else {
+                video.volume = video.volume + 0.1;
+            }
+
+        }
+
+        volins.onclick = function () {
+
+            if (video.volume - 0.1 < 0) {
+                video.volume = 0;
+            } else {
+                video.volume = video.volume - .1;
+            }
+
+        }
+
+
+        var lilist = beisu_list.getElementsByTagName("li");
+        for (var i = 0; i < lilist.length; i++) {
+            lilist[i].index = i;
+            lilist[i].onclick = function () {
+                if (this.index == 0) {
+                    video.playbackRate = 1;
+
+                } else if (this.index == 1) {
+                    video.playbackRate = 1.25;
+
+                } else if (this.index == 2) {
+                    video.playbackRate = 1.5;
+
+                } else if (this.index == 3) {
+                    video.playbackRate = 2;
+
+                }
+            }
+        }
+
+        videoPlayer.onmouseenter = function () {
+            meenu.style.display = 'block';
+
+        }
+        videoPlayer.onmouseleave = function () {
+            meenu.style.display = 'none';
+        }
+
+        beisu.onmouseenter = function () {
+            beisu_list.style.display = 'block';
+
+        }
+        beisu_list.onmouseleave = function () {
+            beisu_list.style.display = 'none';
+        }
+
+        jindu.onmouseenter = function () {
+            jindu.style.height = '14px';
+            jindu.getElementsByTagName('i')[0].style.height = '18px';
+            jindu.style.top = '-14px';
+
+        }
+        jindu.onmouseleave = function () {
+            jindu.style.height = '2px';
+            jindu.getElementsByTagName('i')[0].style.height = '6px';
+            jindu.style.top = '-2px';
+        }
+
+
+        jindu.onclick = function (e) {
+            var location = e.layerx;
+            var width = jindu.clientWidth;
+            var targettime = location / width * video.duration;
+            video.currentTime = targettime;
+        }
+        play.onclick = function () {
+            if (video.paused) {
+                video.play();
+                play.innerHTML = 'stop';
+
+            } else {
+                video.pause();
+                play.innerHTML = 'play';
+            }
+
+        }
+
+        setInterval(function () {
+            var total = video.duration;
+            var noetime = video.currentTime;
+            time.innerHTML = parseInt(noetime / 60) + ':' + parseInt(noetime % 60) + '/' + parseInt(total /
+                60) + ':' + parseInt(total % 60);
+            var width = noetime / total * jindu.clientWidth;
+            jindu.getElementsByTagName('i')[0].style.left = width + 'px';
+            jindu.getElementsByTagName('div')[0].style.width = width + 'px';
+
+        }, 1000)
+    </script>
+
+</body>
+
+</html>

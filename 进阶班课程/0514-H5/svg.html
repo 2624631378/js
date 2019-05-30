@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .line1 {
+            stroke: black;
+            stroke-width: 10px;
+        }
+
+        .line2 {
+            stroke: red;
+        }
+        polyline{
+            fill:transparent;
+            stroke: aquamarine;
+        }
+        polygon{
+            fill:transparent; 
+            stroke: aquamarine;
+        }
+        text{
+            stroke: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <!--  svg 线 矩形  -->
+
+    <svg width="500px" height="300px" style="border:1px solid">
+        <!-- <line x1="100" y1="100" x2="200" y2="200" class="line1"></line>
+        <line x1="200" y1="100" x2="200" y2="200" class="line2"></line>
+        <rect width="100" height="50" x="0" y="0" rx="10" ry="10"></rect>
+
+        <circle r="50" cx = "50" cy="220"></circle>
+        <ellipse rx="100" ry="70" cx="400" cy="200"></ellipse> -->
+        <polyline points="0 0,50 50, 50 100,100 100,100 50"></polyline>
+
+        <polygon points="0 0,50 50, 50 100,100 100,100 50"></polygon>
+        <text x="100" y="100">ly</text>
+    </svg>
+
+    
+
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+
+        安装node    node -v 查看版本   npm -v查看版本
+
+        npm install -g less 安装less编译器
+        lessc demo.less > demo.css  编译less文件为css
+
+        npm install -g unlify-js 安装js压缩器
+        unlifyjs demo.js -o demo.min.js 压缩demo.js为min版js
+     -->
+
+    <!-- 
+         组件化 模块化 工程化
+            共同特点：高内聚 低耦合
+
+
+         前端工程化将前端开发流程规范化标准化，包括开发流程，技术选型，代码规范，构建发布等，用于提升开发者的开发效率和代码质量（思想）
+
+         前端工程化体系： node服务层（数据）  + web应用层（开发）  + 前端运维层（测试+部署）
+
+         模块化：代码复用
+
+         组件化：
+
+      -->
+
+    <!-- 
+          前端模块化： css模块化 + js模块化
+       -->
+
+    <!-- 
+           commonJs  服务器端模块化规范  同步，导致阻塞
+           浏览器不兼容module、exports、require、global，如果浏览器使用则需要通过browserify编译成浏览器支持的
+
+           npm install -g browserify 安装包
+           borwserify main.js -o bundle.js 将main打包成浏览器可识别的bundle
+        -->
+
+    <!-- 
+            AMD规范 
+            amd的核心思想就是通过define来定义一个模块，然后使用require来加载一个模块。
+
+            define(moduleID,['module1','module2'],function(m1,m2,m3){...})
+
+            <script src="./js/require.js" data-main="./index.js"></script>
+         -->
+
+         <!-- 
+
+            less  css预处理语言
+            lessc  .less .css 运行命令将文件编译成css模式；
+
+            kolar方式编译，借助软件的方式；自动编译；
+          -->
+
+</body>
+
+</html>

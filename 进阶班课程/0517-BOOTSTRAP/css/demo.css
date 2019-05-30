@@ -1,0 +1,37 @@
+.banner-top .navigation{
+ background: slategray;
+}
+
+.navbar.navbar-default{
+    background: none; border: none;
+}
+.glyphicon{
+    color: azure; font-size: 30px; margin-right: 12px;
+}
+
+.banner-top .container h1{
+    display: inline-block;
+
+}
+.banner-top .container h1,.banner-top .container h4{
+    color: aliceblue;
+}
+
+.nav.navbar-nav li a{
+    color: aliceblue;
+    font-size: 20px;
+    font-weight: bold;
+}
+.nav.navbar-nav li a:hover{
+    color: #f40;
+}
+@media (max-width:1000px){
+    .navbar{
+        max-height: 100px;
+        z-index: 99999;
+       
+    }  
+   .navbar-collapse{
+        background: steelblue;  
+    }
+}

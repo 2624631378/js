@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            width: 500px;
+            height: 300px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="can" width="500px" height="300px"></canvas>
+    <!-- <script>
+        var canvas = document.getElementById('can');
+        var ctx = canvas.getContext("2d");
+        ctx.moveTo(100, 100);
+        ctx.lineTo(200, 200);
+
+        ctx.lineWidth = 10; // 设置粗细，在一个路径中的粗细是一样的
+        ctx.stroke();
+
+        ctx.beginPath(); // 重新开始一个新的路径
+        ctx.lineWidth = 10;
+        ctx.moveTo(200, 200);
+        ctx.lineTo(100, 200);
+        ctx.lineTo(100, 150);
+
+        ctx.stroke();
+
+        ctx.fill(); // 填充
+    </script> -->
+
+
+    <!-- <script>
+        var canvas = document.getElementById('can');
+        var ctx = canvas.getContext("2d");
+
+        // 方法一
+        ctx.rect(100, 100, 150, 100); // 矩形，前两个值代表起点，第三个值带边宽度 第四个带边高度；
+        ctx.fill(); //填充
+        ctx.stroke(); //渲染
+
+
+
+        //方法二 
+        ctx.strokeRect(0, 0, 150, 100); //直接构建一个矩形
+
+
+        // 方法三
+        ctx.fillRect(150, 150, 150, 100) //直接构建一个填充矩形
+    </script> -->
+
+
+    <!-- 落体运动 -->
+    <!-- <script>
+        var canvas = document.getElementById('can');
+        var ctx = canvas.getContext("2d");
+        ctx.fillRect(100, 100, 50, 50) //直接构建一个填充矩形
+        var _height = 100;
+        var speed = 13;
+        var timer = setInterval(function () {
+            _height += speed;
+            if (_height - 250 >= speed) {
+                _height == 250;
+                clearTimeout(timer)
+            } else {
+                ctx.clearRect(0, 0, 500, 300);
+                ctx.fillRect(100, _height, 50, 50);
+            }
+        }, 1000 / 30)
+    </script> -->
+
+    <!-- 园  圆心(x,y) 半径(r) 弧度（起始弧度，结束弧度） 方向（顺时针 逆时针） -->
+    <!-- <script>
+        var canvas = document.getElementById('can');
+        var ctx = canvas.getContext("2d");
+        ctx.arc(100,100,50, 0, Math.PI * 2, 1);
+        ctx.stroke();
+    </script> -->
+
+
+    <!-- 圆角矩形  arcTo -->
+
+    <script>
+        var canvas = document.getElementById('can');
+        var ctx = canvas.getContext("2d");
+        ctx.moveTo(100, 110);
+        ctx.arcTo(100, 200, 200,200 ,10); // 终点坐标  拐角的方向  弧半径
+        ctx.arcTo(200, 200, 200,100 ,10);
+        ctx.arcTo(200, 100, 100,100 ,10);
+        ctx.arcTo(100, 100, 100,200 ,10);
+        ctx.stroke();
+    </script>
+</body>
+
+</html>

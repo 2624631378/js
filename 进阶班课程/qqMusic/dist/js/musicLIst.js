@@ -1,0 +1,1 @@
+!function(n){(window.player||(window.player={})).getList=function(i){!function(i){var o="";i.forEach(function(i,n){o+="<li>"+(n+1)+i.singer+i.song+"</li>"}),n(".musicList ul").html(o)}(i)}}(window.Zepto);

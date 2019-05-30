@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <style>
+        div:nth-of-type(1) {
+            width: 100px;
+            height: 100px;
+            background: tomato;
+            position: absolute;
+        }
+
+        div:nth-of-type(2) {
+            width: 200px;
+            height: 200px;
+            background: rgb(9, 64, 167);
+            position: absolute;
+            left: 400px;
+            top: 300px;
+        }
+    </style> -->
+</head>
+
+<body>
+    <!-- dragable 可拖拽 -->
+    <!--chrom safair可正常使用  firefox兼容性不好 -->
+    <!-- 拖拽生命周期，拖拽的组成
+        1、 拖拽开始 拖拽进行中 拖拽结束
+        2、被拖拽的物体 目标区域 -->
+    <!-- 所有的标签元素，当拖拽周期结束时，默认事件是回到原处 -->
+    <!-- <div draggable="true"></div>
+    <div></div> -->
+
+    <!-- <script>
+        var oDragbiv = document.getElementsByTagName('div')[0];
+        var beginX = 0;
+        var beginY = 0;
+
+        oDragbiv.ondragstart = function (e) {
+            beginX = e.clientX;
+            beginY = e.clientY;
+
+        }
+        oDragbiv.ondrag = function (e) {
+            // console.log(e); 
+        }
+        oDragbiv.ondragend = function (e) {
+            var x = e.clientX - beginX;
+            var y = e.clientY - beginY;
+            oDragbiv.style.left = oDragbiv.offsetLeft + x + "px";
+            oDragbiv.style.top = oDragbiv.offsetTop + y + "px";
+        }
+    </script> -->
+
+    <!-- <script>
+        var oDragbiv = document.getElementsByTagName('div')[0];
+        var oDragbiv1 = document.getElementsByTagName('div')[1];
+
+        oDragbiv.ondragstart = function (e) {
+
+        }
+        oDragbiv.ondragend = function (e) {
+
+        }
+        oDragbiv1.ondragenter = function (e) { // 不是元素图像进行触发，是拖拽的鼠标进入触发的
+
+        }
+        oDragbiv1.ondragover = function (e) { // 滑过
+            e.preventDefalut(); // 阻止默认返回原处，不然无法执行ondrop事假
+        }
+        oDragbiv1.ondragleave = function (e) { // 离开
+
+        }
+        oDragbiv1.ondrop = function (e) { // 放下
+
+        }
+    </script> -->
+    <!-- a  img 两个标签是默认可拖拽的 -->
+    <!-- <a href="http://www.baidu.com">ww.baidu.com</a> -->
+
+
+
+
+    <!-- drag demo -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box1 {
+            position: absolute;
+            width: 150px;
+            height: auto;
+            border: 1px solid;
+            padding-bottom: 10px;
+        }
+
+        .box2 {
+            position: absolute;
+            left: 300px;
+            width: 150px;
+            height: auto;
+            border: 1px solid;
+            padding-bottom: 10px;
+        }
+
+        li {
+            position: relative;
+            width: 100px;
+            height: 30px;
+            background: #abcdef;
+            margin: 10px auto 0 auto;
+            list-style: none;
+        }
+    </style>
+    <div class="box1">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+    <div class="box2"></div>
+
+    <script>
+        var dragDom;
+        var liList = document.getElementsByTagName("li");
+        for (var i = 0; i < liList.length; i++) {
+            liList[i].setAttribute("draggable", true);
+            liList[i].ondragstart = function (e) {
+                dragDom = e.target;
+
+            }
+        }
+        var box2 = document.getElementsByClassName("box2")[0];
+        box2.ondragover = function (e) {
+            e.preventDefault();
+        }
+        box2.ondrop = function (e) {            
+            box2.appendChild(dragDom);
+
+        }
+
+
+        var box1 = document.getElementsByClassName("box1")[0];
+        box1.ondragover = function (e) {
+            e.preventDefault();
+        }
+        box1.ondrop = function (e) {            
+            box1.appendChild(dragDom);
+
+        }
+    </script>
+</body>
+
+</html>
