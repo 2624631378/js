@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            width: 200PX;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            perspective: 2000px;
+
+            transform-style: preserve-3d;
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+
+        }
+
+        .box div {
+            width: 100px;
+            height: 100px;
+
+
+        }
+
+        .red {
+
+            border: 3px solid red;
+            transform: rotatey(45deg) skewy(-30deg) translateY(-30px);
+            transform-style: preserve-3d;
+        }
+
+        .greed {
+            border: 3px solid green;
+            /* transform: translate(100px, 0px) */
+            /* transform: translateX(100px) skew(-30deg); */
+            transform-style: preserve-3d;
+        }
+
+        .kailong {
+            width: 0;
+            height: 0;
+            border-right: 50px solid transparent;
+            border-left: 50px solid transparent;
+            border-bottom: 50px solid red;
+        }
+
+        #waterDiv {
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin-top: 200px;
+            background: gray;
+            transition: background-color 2s;
+            -moz-transition: background-color 2s;
+            /* Firefox 4 */
+            -webkit-transition: background-color 2s;
+            /* Safari and Chrome */
+            -o-transition: background-color 2s;
+            /* Opera */
+            border-radius: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="red"></div>
+        <div class="greed"></div>
+    </div>
+
+    <div class="kailong"></div>
+    <script>
+        function checkIn() {
+            var oWaterDiv = document.querySelector('#waterDiv');
+            oWaterDiv.style.backgroundColor = "#87CEFF";
+            oWaterDiv.addEventListener('webkitTransitionEnd', function () {
+                alert('its ok1');
+         
+            }, false);
+
+            oWaterDiv.addEventListener('transitionend', function () {
+                alert('its ok2');
+              
+            }, false);
+        }
+    </script>
+
+
+
+    <div id='waterDiv' onclick="checkIn()"></div>
+
+</body>
+
+</html>
