@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="main" style="width:100%; height:100px; background: burlywood;"></div>
+
+    <!-- 重力感应 -->
+    <!-- 陀螺仪 只有带有陀螺仪的设备才支持体感 -->
+    <!-- 苹果设备的页面只有在https协议的情况下才能使用这些接口  -->
+    <script>
+        window.addEventListener("deviceorientation", function (event) {
+            document.getElementsByClassName("main")[0].innerHTML = "a:" + event.alpha + "<br/>" + "b" + event
+                .beta + "<br/>" + "g:" + event.gamma
+
+        })
+    </script>
+</body>
+
+</html>

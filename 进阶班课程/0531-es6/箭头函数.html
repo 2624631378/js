@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        箭头函数
+        不能作为构造函数，没有原型
+     -->
+
+    <script type="shtml">
+        let sum1 = (a, b) => {
+            return a + b;
+        }
+
+        //   return 可以省略 如下
+
+        let sum2 = (a, b) => a + b;
+        let sum3 = (a, b) => [a, b]; //返会数组
+        let sum4 = (a, b) => ({
+            a: a,
+            b: b
+        });
+
+        console.log(sum1(1, 2));
+        console.log(sum2(1, 2));
+        console.log(sum3(1, 2));
+        console.log(sum4(1, 2));
+    </script>
+
+
+    <script type="shtml">
+        function sun(x) {
+            return function (y) {
+                return function (z) {
+                    return x + y + z
+                }
+            }
+        }
+
+        // 替换成箭头函数的写法
+        let sun = x => y => z => x + y + z;
+        // 等价于
+        let sun = (x) => {
+            return (y) => {
+                return (z) => {
+                    return x + y + z;
+                }
+            }
+        }
+    </script>
+
+    <script>
+        // arguments  最近的非箭头函数函数的arguments  
+        //     function cur(){
+        //        let a = arguments
+        //         return function (){
+        //             console.log(a,arguments);
+
+        //         }
+        //     }
+        //    console.log(cur(1,2)(3,34));
+
+
+
+        function cur() {
+            return () => {
+                return () => {
+                    console.log(arguments); // 1,2
+                }
+            }
+        }
+        cur(1, 2)(3, 34)('a', 'b');
+
+
+        // this  最近的非箭头函数函数的this  如果没有最近的非箭头函数，则this指代window
+
+        var a = 12;
+        let ljkj = () => {
+            console.log(this.a);
+
+        }
+
+        let obj = {
+            a: 34,
+            fn: ljkj
+        };
+        obj.fn(); // 12
+
+        let obj1 = {
+            a: 34,
+            fn: () => {
+                console.log(this.a);
+
+            }
+        };
+        obj1.fn();  //12
+    </script>
+</body>
+
+</html>

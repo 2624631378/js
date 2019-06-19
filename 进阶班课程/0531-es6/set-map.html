@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        set  
+        值唯一，去重效果
+     -->
+    <script type='shtml'>
+        let os = new Set([1, 2, 3, 2, 1, 5])
+
+        let os2 = new Set('abcabc')
+
+        let os3 = new Set([1]);
+        os3.add(1);
+        os3.add([1, '2', 'a', 3]);
+        os3.add(1);
+
+        // delete
+        // clear
+        // has
+
+        os3.forEach((a) => {
+            console.log(a);
+
+        })
+
+        // es6 新增的循环遍历
+        for (let prop of os3) {
+            console.log(prop);
+
+        }
+    </script>
+
+    <script type='shtml'>
+        let arr = [ 1,2,3,4,5];
+    let os = new Set(arr)
+
+    // 转换成数组的方式  array.from     [...os]
+    </script>
+
+
+    <script type='shtml'>
+
+        // 数组去重
+        let arr = [1, 2, 3, 4, 5, 6, 7, 12, 3, 4, 2];
+        let os = new Set(arr);
+        let newArr = [...os];
+        let newArr1 = Array.from(os)
+    </script>
+    <script type='shtml'>
+        // set 取并集 交集 差集
+        let arr1 = [1, 2, 3, 4];
+        let arr2 = [3, 1, 2, 5]
+
+
+        //  取并集
+        // let newos = new Set([...arr1, ...arr2])
+        // let newArr = [...new Set([...arr1, ...arr2])]
+
+        // 取交集
+        // let os1 = new Set(arr1);
+        // let os2 = new Set(arr2);
+        // let newarr1 = [...os1].filter(ele => os2.has(ele))
+
+        // 取差集
+        let os1 = new Set(arr1);
+        let os2 = new Set(arr2);
+        let newarr1 = [...os1].filter(ele => !os2.has(ele));
+        let newarr2 = [...os2].filter(ele => !os1.has(ele));
+        let  newarr = [...newarr1,...newarr2]
+    </script>
+
+    <script>
+        // map 存值的时候以key value的方式
+        let oMap = new Map([
+            ['name', 'ly'],
+            ['age', '16'],
+            ['sex', 'male']
+        ]);
+
+
+        oMap.set('name', 'ly1');
+        oMap.set({}, '-----');
+        oMap.set({}, '+++');
+        oMap.set('name', 'ly2');
+        console.log(oMap);
+
+        // get 取值
+
+        console.log(oMap.get('name'));
+
+
+        const map1 = new Map()
+        const objkey = {
+            p1: 'v1'
+        }
+
+        map1.set(objkey, 'hello')
+        console.log(map1.get(objkey))
+    </script>
+
+</body>
+
+</html>

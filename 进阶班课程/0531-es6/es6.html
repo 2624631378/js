@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script type="shtml">
+        // let
+        //     用let申明不会变量提升
+        //              不可重复申明
+        //              申明的变量没有在全局变量上面        
+
+        // console.log(a); // 报错
+        // let a = 12;
+        // let a = "123" // 报错，a已经被定义
+
+
+
+        //    加强对作用域的控制  let {} 形成块级作用域
+
+        // {
+        //     let b = 12;
+        // }
+        // console.log(b);  //b is not defined
+
+
+        
+        // 形成临时死区
+        let a = 10;
+        {
+            console.log(a);  //Cannot access 'a' before initialization
+            let a =20;
+            
+        }
+        
+    </script>
+
+    <!-- 
+        const
+             申明不了改变的常量值
+             eg: const PI = 20            
+     -->
+
+
+     <script type="shtml">
+        //  ... 运算符   简化书写长度，提升开发效率
+
+        // 写场景   ...收集作用，返回的类型是数组
+        function sum(...arg) {
+            let sumNumber = 0;
+            arg.forEach(function (ele) {
+                sumNumber += ele
+            })
+            return sumNumber;
+
+        }
+
+        let a = sum(1, 2, 3);
+        let b = sum(2, 3, 4, 5, 5);
+        console.log(a + '--' + b);
+
+        //    收集的时候只能做最后一个参数，
+        function test(a, ...arg) {
+            console.log(a);
+            console.log(arg);
+        }
+
+        test(1, 2, 'a', 'b', 'c', 'd');
+        test(2, 3, 'a', 'b', 'c', 'd');
+
+
+        function computr(...arg) {
+            let sum = 0;
+            arg.forEach(function (ele) {
+                sum += ele;
+            })
+            let avr = sum / arg.length
+            console.log(avr);
+        }
+
+        function avg(...arg) {
+            arg.sort(function (a, b) {
+                return a - b;
+            });
+            arg.pop();
+            arg.shift();
+            console.log(arg);
+            return computr(...arg)
+        }
+
+        // avg(2, 4, 6,70,20,0);
+        avg(2, 4, 6);
+    </script>
+
+
+    <script type="shtml">
+        let a = [1,2,3,4];
+        let b = [2,4,6,7];
+        let newa = [...a, ...b];
+   
+        console.log(newa);
+
+
+        let c = {
+            age : 20,
+            name:'ly'
+        }
+
+        let d = {
+            ...c
+        }
+    </script>
+
+    <script>
+    // 解构  
+
+    let obj = {
+        name : 'ly',
+        age:18,
+        old:'kj'
+    }
+
+    // let name,age;
+    // ({name,age} = obj)
+    // console.log(name,age);
+
+    let {name,age} = obj;
+    console.log(name,age);
+    </script>
+
+</body>
+
+
+
+</html>

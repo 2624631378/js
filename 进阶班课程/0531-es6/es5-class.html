@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script type="shtml">
+        Plane.prototype.fly = function () {
+            console.log('fly');
+
+        }
+
+        function Plane() {
+            this.name = 'palne';
+            this.blood = 100;
+        }
+
+        var plane1 = new Plane();
+        var plane2 = new Plane();
+        plane1.fly();
+        console.log(plane1);
+
+
+        AttackPlane.prototype.dan = function () {
+            console.log('bilinbilin');
+        }
+
+        function AttackPlane() {
+            this.name = 'gongji';
+            this.blood = 100;
+
+        }
+    </script>
+
+    <script type="shtml">
+        // 私有属性继承
+        function Plane(name) {
+            this.name = name || 'palne';
+            this.blood = 100;
+        }
+
+        function AttackPlane(name) {
+            Plane.call(this, name) // 通过call或者apply指向plane，继承plane的属性
+
+        }
+
+        var attackPlane1 = new AttackPlane('ly');
+    </script>
+
+    <script type="shtml">
+        // 原型的继承
+        Plane.prototype.fly = function () {
+            console.log('fly');
+
+        }
+
+        function Plane(name) {
+            this.name = name || 'palne';
+            this.blood = 100;
+        }
+
+
+
+        // 方式一：
+        // var temp = function () {};
+        // temp.prototype = Plane.prototype;
+        // AttackPlane.prototype = new temp();
+        // AttackPlane.prototype.constructor = new AttackPlane();
+
+        // AttackPlane.prototype = Plane.prototype;
+        // AttackPlane.prototype = new Plane();
+
+
+        Object.setPrototypeOf(AttackPlane.prototype, Plane.prototype)
+
+        AttackPlane.prototype.dan = function () {
+            console.log('bilinbilin');
+        }
+
+        function AttackPlane(name) {
+            Plane.call(this, name) // 通过call或者apply指向plane，继承plane的属性
+
+        }
+        var attackPlane1 = new AttackPlane('ly');
+        var plane1 = new Plane();
+        attackPlane1.fly();
+    </script>
+
+    <script>
+        // class 构造函数
+        //  私有属性 公有属性（原型上）   静态属性
+
+        class palne {
+            //  不支持非方法的属性
+            static alive() {
+                return 12;
+            }
+            constructor(name) {
+                this.name = name || 'pale';
+                this.boole = 100;
+            }
+            fly() {
+                console.log(fly);
+
+            }
+        }
+
+      class attackplane {
+          constructor(){
+              this.logo = 'ly'
+          }
+          dan (){
+              console.log('fly');
+              
+          }
+      }
+    </script>
+
+</body>
+
+</html>

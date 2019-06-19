@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #main {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: wheat;
+        }
+    </style>
+</head>
+
+<body>
+<!-- 
+    localstorage 只能存储字符串
+ -->
+    <script>
+        localStorage.name = "ly";
+        localStorage.arr = JSON.stringify([1,2,4]);
+        var arr = [1,2,3];
+        console.log(arr);
+        
+        console.log(JSON.parse(localStorage.arr));
+        console.log(typeof JSON.parse(localStorage.arr));
+
+
+        localStorage.obj = {
+            name:24,
+            age:'ly'
+        }
+
+        console.log(localStorage.obj);
+
+
+        
+
+    </script>
+
+    <!-- 
+        长期存放在浏览器的，写入locastorage中
+        
+        此次会话需要的存储的，存入 sessionstorage； 每次窗口关闭的时候，sessionstorage会自动清空
+     -->
+
+     <!-- 
+         localstorage  cookie
+         1，localstorage在发送请求的时候不会把数据发出去，cookie会把所有的数据带出去
+         1，cookie存储容量比较小4k， localstorage可以存放比较多的东西 5M左右
+      -->
+
+</body>
+
+</html>
